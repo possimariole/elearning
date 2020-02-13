@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AnneeAcademique index{% endblock %}
+
+{% block body %}
+    <h1>AnneeAcademique index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Debut</th>
+                <th>Fin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annee_academique in annee_academiques %}
+            <tr>
+                <td>{{ annee_academique.id }}</td>
+                <td>{{ annee_academique.debut }}</td>
+                <td>{{ annee_academique.fin }}</td>
+                <td>
+                    <a href="{{ path('annee_academique_show', {'id': annee_academique.id}) }}">show</a>
+                    <a href="{{ path('annee_academique_edit', {'id': annee_academique.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('annee_academique_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Dispenser{% endblock %}
+
+{% block body %}
+    <h1>Edit Dispenser</h1>
+
+    {{ include('dispenser/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('dispenser_index') }}">back to list</a>
+
+    {{ include('dispenser/_delete_form.html.twig') }}
+{% endblock %}
