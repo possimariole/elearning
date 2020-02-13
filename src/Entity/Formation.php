@@ -40,6 +40,11 @@ class Formation
      */
     private $specialites;
 
+    public function __construct()
+    {
+        $this->specialites = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -81,29 +86,39 @@ class Formation
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     /**
-     * @return collection\specialites[]
+     * @return Collection|Specialite[]
      */
-    public function getSpecialite(): Collection
+    public function getSpecialites(): Collection
     {
         return $this->specialites;
     }
 
-    public function removeElement(Specialite $specialite): self
+    public function addSpecialite(Specialite $specialite): self
     {
-        if($this->specialites->contains($specialilte))
-        {
-            $this->specialites->removeElement($specialite);
-                if($specialite->getFormation() === $this)
-                {
-                    $specialite->setFormation($this);
-                }
+        if (!$this->specialites->contains($specialite)) {
+            $this->specialites[] = $specialite;
+            $specialite->setFormation($this);
         }
+
         return $this;
     }
 
-    public function __toString()
+    public function removeSpecialite(Specialite $specialite): self
     {
-        return $this->nom;
+        if ($this->specialites->contains($specialite)) {
+            $this->specialites->removeElement($specialite);
+            // set the owning side to null (unless already changed)
+            if ($specialite->getFormation() === $this) {
+                $specialite->setFormation(null);
+            }
+        }
+
+        return $this;
     }
 }

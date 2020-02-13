@@ -28,6 +28,11 @@ class Format
      */
     private $lecons;
 
+    public function __construct()
+    {
+        $this->lecons = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,31 +50,39 @@ class Format
         return $this;
     }
 
-    /**
-     * @return Collection\Lecon[]
-     */
-    public function getLecon(): Collection
-    {
-        return $this->lecons;
-    }
-
-    public function removeLecon(Lecon $lecon) :self
-    {
-        if($this->lecons->contains($lecon))
-        {
-            $this->lecons->removeElement($lecon);
-            if($lecon->getFormat() === $this)
-        {
-            $lecon->setFormat(null);
-        } 
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->type;
     }
 
+    /**
+     * @return Collection|Lecon[]
+     */
+    public function getLecons(): Collection
+    {
+        return $this->lecons;
+    }
+
+    public function addLecon(Lecon $lecon): self
+    {
+        if (!$this->lecons->contains($lecon)) {
+            $this->lecons[] = $lecon;
+            $lecon->setFormat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLecon(Lecon $lecon): self
+    {
+        if ($this->lecons->contains($lecon)) {
+            $this->lecons->removeElement($lecon);
+            // set the owning side to null (unless already changed)
+            if ($lecon->getFormat() === $this) {
+                $lecon->setFormat(null);
+            }
+        }
+
+        return $this;
+    }
 }

@@ -72,10 +72,9 @@ class Paiement
         return $this;
     }
 
-    public function setInscription(Inscription $inscription): self
+    public function __toString()
     {
-        $this->inscription = $inscription;
-        return $this;
+        return (string)$this->somme;
     }
 
     public function getInscription(): ?Inscription
@@ -83,9 +82,10 @@ class Paiement
         return $this->inscription;
     }
 
-    public function setModePaiement(ModePaiement $modePaiement): self
+    public function setInscription(?Inscription $inscription): self
     {
-        $this->modePaiement = $modePaiement;
+        $this->inscription = $inscription;
+
         return $this;
     }
 
@@ -94,9 +94,10 @@ class Paiement
         return $this->modePaiement;
     }
 
-    public function __toString()
+    public function setModePaiement(?ModePaiement $modePaiement): self
     {
-        return (string)$this->somme;
-    }
+        $this->modePaiement = $modePaiement;
 
+        return $this;
+    }
 }

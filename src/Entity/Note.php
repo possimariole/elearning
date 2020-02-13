@@ -51,10 +51,9 @@ class Note
         return $this;
     }
 
-    public function setInscription(Inscription $inscription): self
+    public function __toString()
     {
-        $this->inscription = $inscription;
-        return $this;
+        return (string)$this->moyenne;
     }
 
     public function getInscription(): ?Inscription
@@ -62,9 +61,10 @@ class Note
         return $this->inscription;
     }
 
-    public function setMatiere(Matiere $matiere): self
+    public function setInscription(?Inscription $inscription): self
     {
-        $this->matiere = $matiere;
+        $this->inscription = $inscription;
+
         return $this;
     }
 
@@ -73,8 +73,10 @@ class Note
         return $this->matiere;
     }
 
-    public function __toString()
+    public function setMatiere(?Matiere $matiere): self
     {
-        return (string)$this->moyenne;
+        $this->matiere = $matiere;
+
+        return $this;
     }
 }

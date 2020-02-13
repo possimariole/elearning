@@ -41,6 +41,11 @@ class Partie
      */
     private $chapitres;
 
+    public function __construct()
+    {
+        $this->chapitres = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,10 +75,9 @@ class Partie
         return $this;
     }
 
-    public function setMatiere(Matiere $matiere): self
+    public function __toString()
     {
-        $this->matiere = $matiere;
-        return $this;
+        return $this->titre;
     }
 
     public function getMatiere(): ?Matiere
@@ -81,32 +85,41 @@ class Partie
         return $this->Matiere;
     }
 
+    public function setMatiere(?Matiere $Matiere): self
+    {
+        $this->Matiere = $Matiere;
+
+        return $this;
+    }
+
     /**
-     * @return Collection\Chapitre[]
+     * @return Collection|Chapitre[]
      */
-    public function getChapitre(): Collection
+    public function getChapitres(): Collection
     {
         return $this->chapitres;
     }
 
-    public function removeChapitre(Chapitre $chapitre) :self
+    public function addChapitre(Chapitre $chapitre): self
     {
-        if($this->chapitres->contains($chapitre))
-        {
-            $this->chapitres->removeChapitre($chapitre);
-            if($chapitre->getPartie() === $this)
-        {
-            $chapitre->setPartie(null);
-        } 
+        if (!$this->chapitres->contains($chapitre)) {
+            $this->chapitres[] = $chapitre;
+            $chapitre->setPartie($this);
         }
 
         return $this;
     }
 
-    public function __toString()
+    public function removeChapitre(Chapitre $chapitre): self
     {
-        return $this->titre;
+        if ($this->chapitres->contains($chapitre)) {
+            $this->chapitres->removeElement($chapitre);
+            // set the owning side to null (unless already changed)
+            if ($chapitre->getPartie() === $this) {
+                $chapitre->setPartie(null);
+            }
+        }
+
+        return $this;
     }
-
-
 }

@@ -38,8 +38,11 @@ class Chapitre
      * @ORM\OneToMany(targetEntity="App\Entity\Lecon", mappedBy="chapitre")
      */
     private $lecons;
-    
 
+    public function __construct()
+    {
+        $this->lecons = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -70,10 +73,9 @@ class Chapitre
         return $this;
     }
 
-    public function setPartie(Partie $partie): self
+    public function __toString()
     {
-        $this->partie = $partie;
-        return $this;
+        return $this->titre;
     }
 
     public function getPartie(): ?Partie
@@ -81,31 +83,41 @@ class Chapitre
         return $this->partie;
     }
 
+    public function setPartie(?Partie $partie): self
+    {
+        $this->partie = $partie;
+
+        return $this;
+    }
 
     /**
-     * @return Collection\Lecon[]
+     * @return Collection|Lecon[]
      */
-    public function getLecon(): Collection
+    public function getLecons(): Collection
     {
         return $this->lecons;
     }
 
-    public function removeLecon(Lecon $lecon) :self
+    public function addLecon(Lecon $lecon): self
     {
-        if($this->lecons->contains($lecon))
-        {
-            $this->lecons->removeLecon($lecon);
-            if($lecon->getChapitre() === $this)
-        {
-            $lecon->setChapitre(null);
-        } 
+        if (!$this->lecons->contains($lecon)) {
+            $this->lecons[] = $lecon;
+            $lecon->setChapitre($this);
         }
 
         return $this;
     }
 
-    public function __toString()
+    public function removeLecon(Lecon $lecon): self
     {
-        return $this->titre;
+        if ($this->lecons->contains($lecon)) {
+            $this->lecons->removeElement($lecon);
+            // set the owning side to null (unless already changed)
+            if ($lecon->getChapitre() === $this) {
+                $lecon->setChapitre(null);
+            }
+        }
+
+        return $this;
     }
 }

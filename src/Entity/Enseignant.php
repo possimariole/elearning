@@ -74,6 +74,12 @@ class Enseignant
      */
     private $adresse;
 
+    public function __construct()
+    {
+        $this->diplomes = new ArrayCollection();
+        $this->dispensers = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -115,6 +121,35 @@ class Enseignant
         return $this;
     }
 
+    public function getSexe(): ?string
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe(string $sexe): self
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    public function getLieuNaissance(): ?string
+    {
+        return $this->lieuNaissance;
+    }
+
+    public function setLieuNaissance(string $lieuNaissance): self
+    {
+        $this->lieuNaissance = $lieuNaissance;
+
+        return $this;
+    }
+    
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     public function getPays(): ?string
     {
         return $this->pays;
@@ -139,106 +174,77 @@ class Enseignant
         return $this;
     }
 
-    public function getSexe(): ?string
+    /**
+     * @return Collection|Diplome[]
+     */
+    public function getDiplomes(): Collection
     {
-        return $this->sexe;
+        return $this->diplomes;
     }
 
-    public function setSexe(string $sexe): self
+    public function addDiplome(Diplome $diplome): self
     {
-        $this->sexe = $sexe;
+        if (!$this->diplomes->contains($diplome)) {
+            $this->diplomes[] = $diplome;
+            $diplome->setEnseignant($this);
+        }
 
         return $this;
     }
 
-    public function getLieuNaissance(): ?string
+    public function removeDiplome(Diplome $diplome): self
     {
-        return $this->lieuNaissance;
-    }
-
-    public function setLieuNaissance(string $lieuNaissance): self
-    {
-        $this->lieuNaissance = $lieuNaissance;
+        if ($this->diplomes->contains($diplome)) {
+            $this->diplomes->removeElement($diplome);
+            // set the owning side to null (unless already changed)
+            if ($diplome->getEnseignant() === $this) {
+                $diplome->setEnseignant(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getAdresse(): ?string
+    /**
+     * @return Collection|Dispenser[]
+     */
+    public function getDispensers(): Collection
+    {
+        return $this->dispensers;
+    }
+
+    public function addDispenser(Dispenser $dispenser): self
+    {
+        if (!$this->dispensers->contains($dispenser)) {
+            $this->dispensers[] = $dispenser;
+            $dispenser->setEnseignant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDispenser(Dispenser $dispenser): self
+    {
+        if ($this->dispensers->contains($dispenser)) {
+            $this->dispensers->removeElement($dispenser);
+            // set the owning side to null (unless already changed)
+            if ($dispenser->getEnseignant() === $this) {
+                $dispenser->setEnseignant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdresse(): ?Adresse
     {
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setAdresse(Adresse $adresse): self
     {
         $this->adresse = $adresse;
 
         return $this;
     }
-
-    public function addDiplome(Diplome $diplome)
-    {
-        if(!$this->diplomes->contains($diplome))
-        {
-            $this->diplomes[] = $diplome;
-            $diplome->setEnseignsnt($this);
-        }
-        return $this;
-    }
-
-    /**
-     * @return collection\Diplomes[];
-     */
-    public function getDiplome(): Collection
-    {
-        return $this->diplomes;
-    }
-
-    public function removeElement(Diplome $diplome): self
-    {
-        if($this->diplomes->contains($diplome))
-        {
-            $this->diplomes->removeElement($diplome);
-            if($diplome->getEnseignant() === $this); 
-            {
-                $diplome->setEnseignant(null);
-            }
-        }
-        return $this;
-    }
-
-    public function addDispenser(Dispenser $dispenser)
-    {
-        if(!$this->dispensers->contains($dispenser))
-        {
-            $this->dispensers[] = $dispenser;
-            $dispenser->setEnseignant($this);
-        }
-        return $this;
-    }
-    /**
-     * @return collection\Dispensers[];
-     */
-    public function getdispenser(): Collection
-    {
-        return $this->dispensers;
-    }
-
-    public function removeDispenser(Dispenser $Dispenser): self
-    {
-        if($this->dispensers->contains($dispenser))
-        {
-            $this->dispensers->removeElement($dispenser);
-            if($dispenser->getEnseignant() === $this)
-            {
-                $dispenser->setEnseignant(null);
-            }
-        }
-              return $this;
-    }
-    
-    public function __toString()
-    {
-        return $this->nom;
-    }
-
 }

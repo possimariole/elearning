@@ -69,6 +69,11 @@ class Apprenant
      */
     private $adresse;
 
+    public function __construct()
+    {
+        $this->inscriptions = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,30 +115,6 @@ class Apprenant
         return $this;
     }
 
-    public function getPays(): ?string
-    {
-        return $this->pays;
-    }
-
-    public function setPays(string $pays): self
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
     public function getSexe(): ?string
     {
         return $this->sexe;
@@ -158,41 +139,75 @@ class Apprenant
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function __toString()
     {
-        return $this->adresse;
+        return $this->nom;
     }
 
-    public function setAdresse(string $adresse): self
+    public function getPays(): ?string
     {
-        $this->adresse = $adresse;
+        return $this->pays;
+    }
+
+    public function setPays(string $pays): self
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }
 
     /**
-     * @return collection\inscriptions[]
+     * @return Collection|Inscription[]
      */
-    public function getInscription(): Collection
+    public function getInscriptions(): Collection
     {
         return $this->inscriptions;
     }
 
-    public function removeElement(Inscription $inscription): self
+    public function addInscription(Inscription $inscription): self
     {
-        if($this->inscritions->contains($inscription))
-        {
-            $this->inscriptions->removeElement($inscription);
-            if($inscription->getApprenant() === $this); 
-            {
-                $inscription->setApprenant(null);
-            }
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions[] = $inscription;
+            $inscription->setApprenant($this);
         }
+
         return $this;
     }
 
-    public function __toString()
+    public function removeInscription(Inscription $inscription): self
     {
-        return $this->nom;
+        if ($this->inscriptions->contains($inscription)) {
+            $this->inscriptions->removeElement($inscription);
+            // set the owning side to null (unless already changed)
+            if ($inscription->getApprenant() === $this) {
+                $inscription->setApprenant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdresse(): ?Adresse
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?Adresse $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
     }
 }

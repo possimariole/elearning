@@ -80,10 +80,9 @@ class Diplome
         return $this;
     }
 
-    public function setEnseignant(Enseignant $enseignant): self
+    public function __toString()
     {
-        $this->enseignant = $enseignant;
-        return $this;
+        return $this->nom;
     }
 
     public function getEnseignant(): ?Enseignant
@@ -91,8 +90,10 @@ class Diplome
         return $this->enseignant;
     }
 
-    public function __toString()
+    public function setEnseignant(?Enseignant $enseignant): self
     {
-        return $this->nom;
+        $this->enseignant = $enseignant;
+
+        return $this;
     }
 }

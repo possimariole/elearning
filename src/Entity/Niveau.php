@@ -31,6 +31,11 @@ class Niveau
      */
     private $inscriptions;
 
+    public function __construct()
+    {
+        $this->inscriptions = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,38 +53,39 @@ class Niveau
         return $this;
     }
 
-    public function addInscription(Inscription $inscription)
+    public function __toString()
     {
-        if(!$this->inscriptions->contains($inscription))
-        {
-            $this->inscriptions[] = $inscription;
-            $inscription->setNiveau($this);
-        }
-        return $this;
+        return $this->nom;
     }
+
     /**
-     * @return collection\inscriptions;
+     * @return Collection|Inscription[]
      */
-    public function getInscription(): Collection
+    public function getInscriptions(): Collection
     {
         return $this->inscriptions;
     }
 
-    public function removeElement(Inscription $inscription): self
+    public function addInscription(Inscription $inscription): self
     {
-        if($this->inscritions->contains($inscription))
-        {
-            $this->inscriptions->removeElement($inscription);
-            if($inscription->getNiveau() === $this); 
-            {
-                $inscription->setNiveau(null);
-            }
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions[] = $inscription;
+            $inscription->setNiveau($this);
         }
+
         return $this;
     }
 
-    public function __toString()
+    public function removeInscription(Inscription $inscription): self
     {
-        return $this->nom;
+        if ($this->inscriptions->contains($inscription)) {
+            $this->inscriptions->removeElement($inscription);
+            // set the owning side to null (unless already changed)
+            if ($inscription->getNiveau() === $this) {
+                $inscription->setNiveau(null);
+            }
+        }
+
+        return $this;
     }
 }

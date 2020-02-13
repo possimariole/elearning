@@ -47,6 +47,13 @@ class Matiere
      */
     private $parties;
 
+    public function __construct()
+    {
+        $this->notes = new ArrayCollection();
+        $this->dispensers = new ArrayCollection();
+        $this->parties = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,81 +83,101 @@ class Matiere
         return $this;
     }
 
-    /**
-     * @return collection\Notes[]
-     */
-    public function getNote(): collection
-    {
-        return $this->notes;
-    }
-
-    public function removeElement(Note $note): self
-    {
-        if($this->notes->contains($note))
-        {
-            $this->notes->removeElement($note);
-            if($note->getMatiere() === $this)
-            {
-                    $note->setMatiere(null);
-            }
-        }
-        return $this;
-    }
-
-    public function addDispenser(Dispenser $dispenser)
-    {
-        if(!$this->dispensers->contains($dispenser))
-        {
-            $this->dispensers[] = $dispenser;
-            $dispenser->setMatiere($this);
-        }
-        return $this;
-    }
-    /**
-     * @return collection\Dispensers[];
-     */
-    public function getdispenser(): Collection
-    {
-        return $this->dispensers;
-    }
-
-    public function removeDispenser(Dispenser $Dispenser): self
-    {
-        if($this->dispensers->contains($dispenser))
-        {
-            $this->dispensers->removeElement($dispenser);
-            if($dispenser->getMatiere() === $this)
-            {
-                $dispenser->setMatiere(null);
-            }
-        }
-              return $this;
-    }
-
-    /**
-     * @return collection\Parties[]
-     */
-    public function getPartie(): collection
-    {
-        return $this->parties;
-    }
-
-    public function removePartie(Partie $partie): self
-    {
-        if($this->parties->contains($partie))
-        {
-            $this->parties->removePartie($partie);
-            if($partie->getMatiere() === $this)
-            {
-                    $partie->setMatiere(null);
-            }
-        }
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->nom;
     }
 
+    /**
+     * @return Collection|Note[]
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Note $note): self
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes[] = $note;
+            $note->setMatiere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNote(Note $note): self
+    {
+        if ($this->notes->contains($note)) {
+            $this->notes->removeElement($note);
+            // set the owning side to null (unless already changed)
+            if ($note->getMatiere() === $this) {
+                $note->setMatiere(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Dispenser[]
+     */
+    public function getDispensers(): Collection
+    {
+        return $this->dispensers;
+    }
+
+    public function addDispenser(Dispenser $dispenser): self
+    {
+        if (!$this->dispensers->contains($dispenser)) {
+            $this->dispensers[] = $dispenser;
+            $dispenser->setMatiere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDispenser(Dispenser $dispenser): self
+    {
+        if ($this->dispensers->contains($dispenser)) {
+            $this->dispensers->removeElement($dispenser);
+            // set the owning side to null (unless already changed)
+            if ($dispenser->getMatiere() === $this) {
+                $dispenser->setMatiere(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Partie[]
+     */
+    public function getParties(): Collection
+    {
+        return $this->parties;
+    }
+
+    public function addParty(Partie $party): self
+    {
+        if (!$this->parties->contains($party)) {
+            $this->parties[] = $party;
+            $party->setMatiere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParty(Partie $party): self
+    {
+        if ($this->parties->contains($party)) {
+            $this->parties->removeElement($party);
+            // set the owning side to null (unless already changed)
+            if ($party->getMatiere() === $this) {
+                $party->setMatiere(null);
+            }
+        }
+
+        return $this;
+    }
 }

@@ -64,6 +64,12 @@ class Inscription
      */
     private $specialite;
 
+    public function __construct()
+    {
+        $this->paiements = new ArrayCollection();
+        $this->notes = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,72 +99,70 @@ class Inscription
         return $this;
     }
 
-    public function addPaiement(Paiement $paiement) :self
+    public function __toString()
     {
-        if(!$this->paiements->contains($paiement))
-        {
-            $this->paiements[] = $paiement;
-            $paiement->setInscription($this);
-        }
-        return $this;
+        return (string)$this->somme;
     }
 
     /**
-     * @return Collection\Paiement[]
+     * @return Collection|Paiement[]
      */
-    public function getPaiement(): Collection
+    public function getPaiements(): Collection
     {
         return $this->paiements;
     }
 
-    public function removePaiement(Paiement $paiement) :self
+    public function addPaiement(Paiement $paiement): self
     {
-        if($this->paiements->contains($paiement))
-        {
-            $this->paiements->removeElement($paiement);
-            if($paiement->getInscription() === $this)
-        {
-            $paiement->setInscription(null);
-        } 
+        if (!$this->paiements->contains($paiement)) {
+            $this->paiements[] = $paiement;
+            $paiement->setInscription($this);
         }
 
         return $this;
     }
 
-    public function addNote(Note $note): self
+    public function removePaiement(Paiement $paiement): self
     {
-        if(!$this->notes->contains($note))
-        {
-            $this->notes[] = $note;
-            $note->setInscription($this);
+        if ($this->paiements->contains($paiement)) {
+            $this->paiements->removeElement($paiement);
+            // set the owning side to null (unless already changed)
+            if ($paiement->getInscription() === $this) {
+                $paiement->setInscription(null);
+            }
         }
+
         return $this;
     }
 
     /**
-     * @return collection\notes[]
+     * @return Collection|Note[]
      */
-    public function getNote(): Collection
+    public function getNotes(): Collection
     {
         return $this->notes;
     }
 
-    public function removeElement(Note $note): self 
+    public function addNote(Note $note): self
     {
-        if($this->notes->contains($note))
-        {
-            $this->notes->removeElement($note);
-            if($note->getInscription() === $this)
-            {
-                $note->setInscription($this);
-            }
+        if (!$this->notes->contains($note)) {
+            $this->notes[] = $note;
+            $note->setInscription($this);
         }
+
         return $this;
     }
 
-    public function setAnneeAcademique(AnneeAcademique $anneeAcademique): self
+    public function removeNote(Note $note): self
     {
-        $this->anneeAcademique = $anneeAcademique;
+        if ($this->notes->contains($note)) {
+            $this->notes->removeElement($note);
+            // set the owning side to null (unless already changed)
+            if ($note->getInscription() === $this) {
+                $note->setInscription(null);
+            }
+        }
+
         return $this;
     }
 
@@ -167,9 +171,10 @@ class Inscription
         return $this->anneeAcademique;
     }
 
-    public function setNiveau(Niveau $niveau): self
+    public function setAnneeAcademique(?AnneeAcademique $anneeAcademique): self
     {
-        $this->niveau = $niveau;
+        $this->anneeAcademique = $anneeAcademique;
+
         return $this;
     }
 
@@ -178,9 +183,10 @@ class Inscription
         return $this->niveau;
     }
 
-    public function setApprenant(Apprenant $apprenant): self
+    public function setNiveau(?Niveau $niveau): self
     {
-        $this->apprenant = $apprenant;
+        $this->niveau = $niveau;
+
         return $this;
     }
 
@@ -189,9 +195,10 @@ class Inscription
         return $this->apprenant;
     }
 
-    public function setSpecialite(Specialite $specialite): self
+    public function setApprenant(?Apprenant $apprenant): self
     {
-        $this->specialite = $specialite;
+        $this->apprenant = $apprenant;
+
         return $this;
     }
 
@@ -200,10 +207,10 @@ class Inscription
         return $this->specialite;
     }
 
-    public function __toString()
+    public function setSpecialite(?Specialite $specialite): self
     {
-        return (string)$this->somme;
-    }
+        $this->specialite = $specialite;
 
-    
+        return $this;
+    }
 }

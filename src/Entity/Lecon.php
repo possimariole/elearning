@@ -86,10 +86,9 @@ class Lecon
         return $this;
     }
 
-    public function setFormat(Format $format): self
+    public function __toString()
     {
-        $this->format = $format;
-        return $this;
+        return $this->titre;
     }
 
     public function getFormat(): ?Format
@@ -97,19 +96,22 @@ class Lecon
         return $this->format;
     }
 
-    public function setChapitre(Chapitre $chapitre): self
+    public function setFormat(?Format $format): self
     {
-        $this->chapitre = $chapitre;
+        $this->format = $format;
+
         return $this;
     }
 
-    public function getchapitre(): ?Chapitre
+    public function getChapitre(): ?Chapitre
     {
         return $this->chapitre;
     }
 
-    public function __toString()
+    public function setChapitre(?Chapitre $chapitre): self
     {
-        return $this->titre;
+        $this->chapitre = $chapitre;
+
+        return $this;
     }
 }

@@ -43,6 +43,12 @@ class AnneeAcademique
      */
     private $dispensers;
 
+    public function __construct()
+    {
+        $this->inscriptions = new ArrayCollection();
+        $this->dispensers = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -81,59 +87,61 @@ class AnneeAcademique
         }
         return $this;
     }
-    /**
-     * @return collection\inscriptions;
-     */
-    public function getInscription(): Collection
-    {
-        return $this->inscriptions;
-    }
-
-    public function removeElement(Inscription $inscription): self
-    {
-        if($this->inscritions->contains($inscription))
-        {
-            $this->inscriptions->removeElement($inscription);
-            if($inscription->getAnneeAcademique() === $this); 
-            {
-                $inscription->setAnneeAcademique(null);
-            }
-        }
-        return $this;
-    }
-
-    public function addDispenser(Dispenser $dispenser)
-    {
-        if(!$this->dispensers->contains($dispenser))
-        {
-            $this->dispensers[] = $dispenser;
-            $dispenser->setAnneeAcademique($this);
-        }
-        return $this;
-    }
-    /**
-     * @return collection\Dispensers[];
-     */
-    public function getdispenser(): Collection
-    {
-        return $this->dispensers;
-    }
-
-    public function removeDispenser(Dispenser $Dispenser): self
-    {
-        if($this->dispensers->contains($dispenser))
-        {
-            $this->dispensers->removeElement($dispenser);
-            if($dispenser->getAnneeAcademique() === $this)
-            {
-                $dispenser->setAnneeAcademique(null);
-            }
-        }
-          return $this;
-    }
 
     public function __toString()
     {
         return (string)$this->debut;
+    }
+
+    /**
+     * @return Collection|Inscription[]
+     */
+    public function getInscriptions(): Collection
+    {
+        return $this->inscriptions;
+    }
+
+    public function removeInscription(Inscription $inscription): self
+    {
+        if ($this->inscriptions->contains($inscription)) {
+            $this->inscriptions->removeElement($inscription);
+            // set the owning side to null (unless already changed)
+            if ($inscription->getAnneeAcademique() === $this) {
+                $inscription->setAnneeAcademique(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Dispenser[]
+     */
+    public function getDispensers(): Collection
+    {
+        return $this->dispensers;
+    }
+
+    public function addDispenser(Dispenser $dispenser): self
+    {
+        if (!$this->dispensers->contains($dispenser)) {
+            $this->dispensers[] = $dispenser;
+            $dispenser->setAnneeAcademique($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDispenser(Dispenser $dispenser): self
+    {
+        if ($this->dispensers->contains($dispenser)) {
+            $this->dispensers->removeElement($dispenser);
+            // set the owning side to null (unless already changed)
+            if ($dispenser->getAnneeAcademique() === $this) {
+                $dispenser->setAnneeAcademique(null);
+            }
+        }
+
+        return $this;
     }
 }

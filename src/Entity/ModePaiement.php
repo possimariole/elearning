@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -29,6 +31,11 @@ class ModePaiement
      */
     private $paiements;
 
+    public function __construct()
+    {
+        $this->paiements = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,31 +53,39 @@ class ModePaiement
         return $this;
     }
 
-    /**
-     * @return Collection\Paiement[]
-     */
-    public function getPaiement(): Collection
-    {
-        return $this->paiements;
-    }
-
-    public function removePaiement(Paiement $paiement) :self
-    {
-        if($this->paiements->contains($paiement))
-        {
-            $this->paiements->removeElement($paiement);
-            if($paiement->getModePaiement() === $this)
-        {
-            $paiement->setModePaiement(null);
-        } 
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->libelle;
     }
 
+    /**
+     * @return Collection|Paiement[]
+     */
+    public function getPaiements(): Collection
+    {
+        return $this->paiements;
+    }
+
+    public function addPaiement(Paiement $paiement): self
+    {
+        if (!$this->paiements->contains($paiement)) {
+            $this->paiements[] = $paiement;
+            $paiement->setModePaiement($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaiement(Paiement $paiement): self
+    {
+        if ($this->paiements->contains($paiement)) {
+            $this->paiements->removeElement($paiement);
+            // set the owning side to null (unless already changed)
+            if ($paiement->getModePaiement() === $this) {
+                $paiement->setModePaiement(null);
+            }
+        }
+
+        return $this;
+    }
 }

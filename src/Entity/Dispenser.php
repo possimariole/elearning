@@ -75,10 +75,9 @@ class Dispenser
         return $this;
     }
 
-    public function setEnseignant(Enseignant $enseignant): self
+    public function __toString()
     {
-        $this->enseignant = $enseignant;
-        return $this;
+        return (string)$this->debut;
     }
 
     public function getEnseignant(): ?Enseignant
@@ -86,20 +85,22 @@ class Dispenser
         return $this->enseignant;
     }
 
-    public function setAnneeAcademique(AnneeAcademique $anneeAcademique): self
+    public function setEnseignant(?Enseignant $enseignant): self
     {
-        $this->anneeAcademique = $anneeAcademique;
+        $this->enseignant = $enseignant;
+
         return $this;
     }
 
-    public function getanneeAcademique(): ?AnneeAcademique
+    public function getAnneeAcademique(): ?AnneeAcademique
     {
         return $this->anneeAcademique;
     }
 
-    public function setMatiere(Matiere $matiere): self
+    public function setAnneeAcademique(?AnneeAcademique $anneeAcademique): self
     {
-        $this->matiere = $matiere;
+        $this->anneeAcademique = $anneeAcademique;
+
         return $this;
     }
 
@@ -108,9 +109,11 @@ class Dispenser
         return $this->matiere;
     }
 
-    public function __toString()
+    public function setMatiere(?Matiere $matiere): self
     {
-        return (string)$this->debut;
+        $this->matiere = $matiere;
+
+        return $this;
     }
 
 }

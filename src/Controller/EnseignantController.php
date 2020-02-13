@@ -36,8 +36,7 @@ class EnseignantController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            var_dump($enseignant->getAdresse());
-            die();
+            
             $entityManager->persist($enseignant);
             $entityManager->flush();
 

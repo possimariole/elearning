@@ -77,27 +77,37 @@ class Specialite
     public function __construct()
     {
         $this->matieres = new arraycollection();
+        $this->inscriptions = new ArrayCollection();
     }
 
-    public function addMatiere(Matiere $matiere)
+    public function __toString()
     {
-        $this->matieres[] = $matiere;
-        return $this;
+        return $this->nom;
     }
 
-    public function removeNote(Matiere $matiere)
-    {
-        $this->matieres->removeElement($matiere);
-    }
-    
-    public function getMatieres()
+    /**
+     * @return Collection|Matiere[]
+     */
+    public function getMatieres(): Collection
     {
         return $this->matieres;
     }
 
-    public function setFormation(Formation $formation): self
+    public function addMatiere(Matiere $matiere): self
     {
-        $this->formation = $formation;
+        if (!$this->matieres->contains($matiere)) {
+            $this->matieres[] = $matiere;
+        }
+
+        return $this;
+    }
+
+    public function removeMatiere(Matiere $matiere): self
+    {
+        if ($this->matieres->contains($matiere)) {
+            $this->matieres->removeElement($matiere);
+        }
+
         return $this;
     }
 
@@ -106,38 +116,41 @@ class Specialite
         return $this->formation;
     }
 
-    public function addInscription(Inscription $inscription)
+    public function setFormation(?Formation $formation): self
     {
-        if(!$this->inscriptions->contains($inscription))
-        {
-            $this->inscriptions[] = $inscription;
-            $inscription->setSpecialite($this);
-        }
+        $this->formation = $formation;
+
         return $this;
     }
+
     /**
-     * @return collection\inscriptions;
+     * @return Collection|Inscription[]
      */
-    public function getInscription(): Collection
+    public function getInscriptions(): Collection
     {
         return $this->inscriptions;
     }
 
-    public function removeElement(Inscription $inscription): self
+    public function addInscription(Inscription $inscription): self
     {
-        if($this->inscritions->contains($inscription))
-        {
-            $this->inscriptions->removeElement($inscription);
-            if($inscription->getSpecialite() === $this); 
-            {
-                $inscription->setSpecialite(null);
-            }
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions[] = $inscription;
+            $inscription->setSpecialite($this);
         }
+
         return $this;
     }
 
-    public function __toString()
+    public function removeInscription(Inscription $inscription): self
     {
-        return $this->nom;
+        if ($this->inscriptions->contains($inscription)) {
+            $this->inscriptions->removeElement($inscription);
+            // set the owning side to null (unless already changed)
+            if ($inscription->getSpecialite() === $this) {
+                $inscription->setSpecialite(null);
+            }
+        }
+
+        return $this;
     }
 }
