@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Apprenant;
+use App\Entity\Adresse;
 use App\Form\ApprenantType;
 use App\Repository\ApprenantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

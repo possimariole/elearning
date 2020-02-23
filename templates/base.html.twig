@@ -3,10 +3,94 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-select/css/bootstrap-select.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/charts/c3charts/c3.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/charts/chartist-bundle/chartist.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/charts/morris-bundle/morris.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/cropper/cropper.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/css/buttons.bootstrap4.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/css/dataTables.bootstrap4.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/css/fixedHeader.bootstrap4.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/css/select.bootstrap4.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/datepicker/tempusdeminus.bootstrap-4.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/daterangepicker/daterangepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/full-calendar/css/fullcalendar.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/full-calendar/css/fullcalendar.print.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/inputmask/css/inputmask.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/jvectormap/jquery-jvectormap-2.0.2.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/multi-select/css/multi-select.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/select2/css/select2.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/summernote/css/summernote-bs4.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/vector-map/jqvmap.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/libs/css/style.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="dashboard-main-wrapper">
+            {% include "layout/header.html.twig" %}
+
+            {% include "layout/sidebar.html.twig" %}
+
+            <!-- ============================================================== -->
+            <!-- wrapper  -->
+            <!-- ============================================================== -->
+            <div class="dashboard-wrapper">
+                <div class="dashboard-ecommerce">
+                    {% block body %}{% endblock %}
+
+                    {% include "layout/footer.html.twig" %}
+                </div>
+                <!-- ============================================================== -->
+                <!-- end wrapper  -->
+                <!-- ============================================================== -->
+            </div>
+        </div>
+        <script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+        <script src="{{ asset('assets/vendor/bootstrap-select/js/bootstrap-select.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/c3charts/c3chartjs.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/chartist/chartist.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/charts-bundle/Chart.bundle.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/charts-bundle/chartjs.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/morris/morris.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/morris/raphael.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/sparkline/jquery.sparkline.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/sparkline/spark-js.js') }}"></script>
+        <script src="{{ asset('assets/vendor/croper/cropper.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/datatables/js/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/datepicker/datepicker.js') }}"></script>
+        <script src="{{ asset('assets/vendor/datepicker/moment.js') }}"></script>
+        <script src="{{ asset('assets/vendor/datepicker/tempusdominus-bootstrap-4.js') }}"></script>
+        <script src="{{ asset('assets/vendor/dropzone/dropzone.js') }}"></script>
+        <script src="{{ asset('assets/vendor/full-calendar/js/calendar.js') }}"></script>
+        <script src="{{ asset('assets/vendor/full-calendar/js/fullcalendar.js') }}"></script>
+        <script src="{{ asset('assets/vendor/full-calendar/js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/gauge/gauge.js') }}"></script>
+        <script src="{{ asset('assets/vendor/inputmask/js/jquery.inputmask.bundle.js') }}"></script>
+        <script src="{{ asset('assets/vendor/jvectormap/js/jquery-jvectormap-2.0.2.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/jvectormap/js/jquery-jvectormap-au-mill.js') }}"></script>
+        <script src="{{ asset('assets/vendor/jvectormap/js/jquery-jvectormap-in-mill.js') }}"></script>
+        <script src="{{ asset('assets/vendor/jvectormap/js/jquery-jvectormap-uk-mill.js') }}"></script>
+        <script src="{{ asset('assets/vendor/jvectormap/js/jquery-jvectormap-us-aea-en.js') }}"></script>
+        <script src="{{ asset('assets/vendor/jvectormap/js/jquery-jvectormap-world-mill-en.js') }}"></script>
+        <script src="{{ asset('assets/vendor/multi-select/js/jquery.multi-select.js') }}"></script>
+        <script src="{{ asset('assets/vendor/parsley/parsley.js') }}"></script>
+        <script src="{{ asset('assets/vendor/select2/js/select2.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/shortable-nestable/jquery.nestable.js') }}"></script>
+        <script src="{{ asset('assets/vendor/shortable-nestable/Sortable.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('assets/vendor/summernote/js/sommernote-bs4.js') }}"></script>
+        <script src="{{ asset('assets/vendor/timeline/js/main.js') }}"></script>
+        <script src="{{ asset('assets/libs/js/dashboard-ecommerce.js') }}"></script>
+        <script src="{{ asset('assets/libs/js/dashboard-finance.js') }}"></script>
+        <script src="{{ asset('assets/libs/js/dashboard-influencer.js') }}"></script>
+        <script src="{{ asset('assets/libs/js/dashboard-sales.js') }}"></script>
+        <script src="{{ asset('assets/libs/js/gmaps.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/js/google_map.js') }}"></script>
+        <script src="{{ asset('assets/libs/js/jvectormap.custom.js') }}"></script>
+        <script src="{{ asset('assets/libs/js/main-js.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
