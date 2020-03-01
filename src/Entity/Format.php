@@ -24,6 +24,11 @@ class Format
     private $type;
 
     /**
+     * @ORM\Column(type="boolean", options={"default":true})
+     */
+    private $is_active;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Lecon", mappedBy="format")
      */
     private $lecons;
@@ -82,6 +87,18 @@ class Format
                 $lecon->setFormat(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->is_active;
+    }
+
+    public function setIsActive(bool $is_active): self
+    {
+        $this->is_active = $is_active;
 
         return $this;
     }

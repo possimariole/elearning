@@ -1,26 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Format{% endblock %}
+{% block title %}Détail du format{% endblock %}
 
 {% block body %}
-    <h1>Format</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ format.id }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ format.type }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('format_index') }}">back to list</a>
-
-    <a href="{{ path('format_edit', {'id': format.id}) }}">edit</a>
-
-    {{ include('format/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header">Détail du format</h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="type" class="col-form-label">Type</label>
+                                    <input id="type" disabled type="text" class="form-control" value={{ format.type }}>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('format_edit', {'id': format.id}) }}">
+                            <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
+                        </a>
+                        <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('format_index') }}">
+                            <i class="fa fa-list"></i>&nbsp;Liste
+                        </a>
+                        {{ include('format/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
