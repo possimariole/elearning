@@ -13,7 +13,6 @@ class FormationType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('montantInscription')
             ->add('montantDossier')
         ;
     }

@@ -28,11 +28,6 @@ class Formation
     /**
      * @ORM\Column(type="float")
      */
-    private $montantInscription;
-
-    /**
-     * @ORM\Column(type="float")
-     */
     private $montantDossier;
 
     /**
@@ -58,18 +53,6 @@ class Formation
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getMontantInscription(): ?float
-    {
-        return $this->montantInscription;
-    }
-
-    public function setMontantInscription(float $montantInscription): self
-    {
-        $this->montantInscription = $montantInscription;
 
         return $this;
     }

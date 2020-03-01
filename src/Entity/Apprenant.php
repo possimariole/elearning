@@ -22,6 +22,7 @@ class Apprenant
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message = "ce champ est obligatoire")
+     * 
      */
     private $nom;
 
@@ -39,7 +40,7 @@ class Apprenant
 
     /**
      * @ORM\Column(type="string", length=255)
-     * * @Assert\Country
+     * @Assert\Country
      */
     private $pays;
 
@@ -60,7 +61,7 @@ class Apprenant
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Inscription", mappedBy="apprenant")
-     * @Assert\Type("float")
+     * 
      */
     private $inscriptions;
 

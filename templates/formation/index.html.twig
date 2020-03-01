@@ -10,7 +10,6 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>MontantInscription</th>
                 <th>MontantDossier</th>
                 <th>actions</th>
             </tr>
@@ -20,7 +19,6 @@
             <tr>
                 <td>{{ formation.id }}</td>
                 <td>{{ formation.nom }}</td>
-                <td>{{ formation.montantInscription }}</td>
                 <td>{{ formation.montantDossier }}</td>
                 <td>
                     <a href="{{ path('formation_show', {'id': formation.id}) }}">show</a>

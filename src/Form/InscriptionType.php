@@ -16,11 +16,8 @@ class InscriptionType extends AbstractType
             ->add('date')
             ->add('anneeAcademique')
             ->add('niveau')
-            ->add('apprenant')
             ->add('specialite')
-            ->add('Specialite', SpecialiteType::class)
-            ->add('Apprenant', ApprenantType::class)
-            ->add('AnneeAcademique', AnneeAcademiqueType::class)
+            ->add('apprenant', ApprenantType::class)
         ;
     }
 
