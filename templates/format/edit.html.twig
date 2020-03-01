@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Format{% endblock %}
+{% block title %}Modifier un format{% endblock %}
 
 {% block body %}
-    <h1>Edit Format</h1>
-
-    {{ include('format/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('format_index') }}">back to list</a>
-
-    {{ include('format/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header">Modifier un format</h3>
+                    <div class="card-body">
+                        {{ include('format/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                        {{ include('format/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

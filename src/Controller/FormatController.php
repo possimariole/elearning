@@ -35,6 +35,7 @@ class FormatController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $format->setIsActive(true);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($format);
             $entityManager->flush();

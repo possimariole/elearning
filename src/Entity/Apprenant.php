@@ -65,7 +65,7 @@ class Apprenant
     private $inscriptions;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Adresse", cascade={"persist", "remove", "update"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Adresse", cascade={"persist", "remove"})
      */
     private $adresse;
 
