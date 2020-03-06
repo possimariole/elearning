@@ -1,30 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Specialite{% endblock %}
+{% block title %}Détail sur la Specialite{% endblock %}
 
 {% block body %}
-    <h1>Specialite</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ specialite.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ specialite.nom }}</td>
-            </tr>
-            <tr>
-                <th>Frais</th>
-                <td>{{ specialite.frais }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('specialite_index') }}">back to list</a>
-
-    <a href="{{ path('specialite_edit', {'id': specialite.id}) }}">edit</a>
-
-    {{ include('specialite/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Détail sur la specialites</h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="nom" class="col-form-label">Nom</label>
+                                    <input id="nom" disabled type="text" class="form-control" value={{ specialite.nom }}>
+                                    </div>
+                            </div>
+                                <div class="col-6">
+                                <div class="form-group">
+                                    <label for="frais" class="col-form-label">Frais</label>
+                                    <input id="frais" disabled type="text" class="form-control" value={{ specialite.frais }}>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('specialite_edit', {'id': specialite.id}) }}">
+                            <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
+                        </a>
+                        <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('specialite_index') }}">
+                            <i class="fa fa-list"></i>&nbsp;Liste
+                        </a>
+                        {{ include('specialite/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

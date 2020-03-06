@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Matiere{% endblock %}
+{% block title %}Ajouter une Matiere{% endblock %}
 
 {% block body %}
-    <h1>Create new Matiere</h1>
-
-    {{ include('matiere/_form.html.twig') }}
-
-    <a href="{{ path('matiere_index') }}">back to list</a>
+     <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase">Ajouter une matiere</h3>
+                    <div class="card-body">
+                        {{ include('matiere/_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

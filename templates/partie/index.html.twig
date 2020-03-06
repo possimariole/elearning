@@ -1,37 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Partie index{% endblock %}
+{% block title %}Liste des Parties {% endblock %}
 
 {% block body %}
-    <h1>Partie index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Contenu</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for partie in parties %}
-            <tr>
-                <td>{{ partie.id }}</td>
-                <td>{{ partie.titre }}</td>
-                <td>{{ partie.contenu }}</td>
-                <td>
-                    <a href="{{ path('partie_show', {'id': partie.id}) }}">show</a>
-                    <a href="{{ path('partie_edit', {'id': partie.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('partie_new') }}">Create new</a>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Liste des parties</h3>                    
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    
+                                    <th scope="col">Titre</th>
+                                    <th scope="col">Contenu</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for partie in parties %}
+                                    <tr>
+                                        
+                                        <td>{{ partie.titre}}</td>
+                                        <td>{{ partie.contenu}}</td>
+                                        <td>
+                                            <form method="post" action="{{ path('partie_delete', {'id': partie.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partie.id) }}">
+                                                <button class="btn btn-xs btn-danger float-left mr-2">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            <a class="btn btn-xs btn-info" href="{{ path('partie_show', {'id': partie.id}) }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a class="btn btn-xs btn-primary" href="{{ path('partie_edit', {'id': partie.id}) }}">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <a class="btn btn-xs btn-primary float-right" href="{{ path('partie_new') }}">
+                            <i class="fa fa-pencil"></i>&nbsp;Ajouter
+                        </a>
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

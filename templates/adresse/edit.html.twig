@@ -3,11 +3,17 @@
 {% block title %}Edit Adresse{% endblock %}
 
 {% block body %}
-    <h1>Edit Adresse</h1>
-
-    {{ include('adresse/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('adresse_index') }}">back to list</a>
-
-    {{ include('adresse/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase">Modifier une adresse</h3>
+                    <div class="card-body">
+                        {{ include('adresse/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                        {{ include('adresse/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

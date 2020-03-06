@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Lecon{% endblock %}
+{% block title %}Ajouter une Lecon{% endblock %}
 
 {% block body %}
-    <h1>Create new Lecon</h1>
-
-    {{ include('lecon/_form.html.twig') }}
-
-    <a href="{{ path('lecon_index') }}">back to list</a>
+     <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header">Ajouter une lecon</h3>
+                    <div class="card-body">
+                        {{ include('lecon/_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

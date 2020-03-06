@@ -3,35 +3,57 @@
 {% block title %}AnneeAcademique index{% endblock %}
 
 {% block body %}
-    <h1>AnneeAcademique index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Debut</th>
-                <th>Fin</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for annee_academique in annee_academiques %}
-            <tr>
-                <td>{{ annee_academique.id }}</td>
-                <td>{{ annee_academique.debut }}</td>
-                <td>{{ annee_academique.fin }}</td>
-                <td>
-                    <a href="{{ path('annee_academique_show', {'id': annee_academique.id}) }}">show</a>
-                    <a href="{{ path('annee_academique_edit', {'id': annee_academique.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('annee_academique_new') }}">Create new</a>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase">Liste des Annees Academiques</h3>                 
+                    <div class="card-body">
+                        <table class="table table-">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Debut</th>
+                                    <th scope="col">Fin</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for annee_academique in annee_academiques %}
+                                    <tr>
+                                        <td>{{ annee_academique.id }}</td>
+                                        <td>{{ annee_academique.debut }}</td>
+                                        <td>{{ annee_academique.fin }}</td>
+                                        <td>
+                                            <form method="post" action="{{ path('annee_academique_delete', {'id': annee_academique.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ annee_academique.id) }}">
+                                                <button class="btn btn-xs btn-danger float-left mr-2">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            <a class="btn btn-xs btn-info" href="{{ path('annee_academique_show', {'id': annee_academique.id}) }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a class="btn btn-xs btn-primary" href="{{ path('annee_academique_edit', {'id': annee_academique.id}) }}">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr> 
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <a class="btn btn-xs btn-primary float-right" href="{{ path('annee_academique_new') }}">
+                            <i class="fa fa-pencil"></i>&nbsp;Ajouter
+                        </a>
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Partie{% endblock %}
+{% block title %}Modifier une Partie{% endblock %}
 
 {% block body %}
-    <h1>Edit Partie</h1>
-
-    {{ include('partie/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('partie_index') }}">back to list</a>
-
-    {{ include('partie/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Modifier une partie</h3>
+                    <div class="card-body">
+                        {{ include('partie/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                        {{ include('partie/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

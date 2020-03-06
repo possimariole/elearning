@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New ModePaiement{% endblock %}
+{% block title %}Ajouter un ModePaiement{% endblock %}
 
 {% block body %}
-    <h1>Create new ModePaiement</h1>
-
-    {{ include('mode_paiement/_form.html.twig') }}
-
-    <a href="{{ path('mode_paiement_index') }}">back to list</a>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Ajouter un Mode de Paiement</h3>
+                    <div class="card-body">
+                        {{ include('mode_paiement/_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

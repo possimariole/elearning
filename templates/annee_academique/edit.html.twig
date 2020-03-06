@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit AnneeAcademique{% endblock %}
+{% block title %}Modifier AnneeAcademique{% endblock %}
 
 {% block body %}
-    <h1>Edit AnneeAcademique</h1>
-
-    {{ include('annee_academique/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('annee_academique_index') }}">back to list</a>
-
-    {{ include('annee_academique/_delete_form.html.twig') }}
+   <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase">Modifier une Annee Academique</h3>
+                    <div class="card-body">
+                        {{ include('annee_academique/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                        {{ include('annee_academique/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

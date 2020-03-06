@@ -1,39 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lecon index{% endblock %}
+{% block title %}Liste des Lecons{% endblock %}
 
 {% block body %}
-    <h1>Lecon index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Contenu</th>
-                <th>Url</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for lecon in lecons %}
-            <tr>
-                <td>{{ lecon.id }}</td>
-                <td>{{ lecon.titre }}</td>
-                <td>{{ lecon.contenu }}</td>
-                <td>{{ lecon.url }}</td>
-                <td>
-                    <a href="{{ path('lecon_show', {'id': lecon.id}) }}">show</a>
-                    <a href="{{ path('lecon_edit', {'id': lecon.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('lecon_new') }}">Create new</a>
+   <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header">Liste des lecons</h3>                    
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    
+                                    <th scope="col">Titre</th>
+                                    <th scope="col">contenu</th>
+                                    <th scope="col">URL</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for lecon in lecons %}
+                                    <tr>
+                                        
+                                        <td>{{ lecon.titre}}</td>
+                                        <td>{{ lecon.contenu}}</td>
+                                        <td>{{ lecon.url}}</td>
+                                        <td>
+                                            <form method="post" action="{{ path('lecon_delete', {'id': lecon.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ lecon.id) }}">
+                                                <button class="btn btn-xs btn-danger float-left mr-2">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            <a class="btn btn-xs btn-info" href="{{ path('lecon_show', {'id': lecon.id}) }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a class="btn btn-xs btn-primary" href="{{ path('lecon_edit', {'id': lecon.id}) }}">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <a class="btn btn-xs btn-primary float-right" href="{{ path('lecon_new') }}">
+                            <i class="fa fa-pencil"></i>&nbsp;Ajouter
+                        </a>
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

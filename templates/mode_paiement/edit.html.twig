@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ModePaiement{% endblock %}
+{% block title %}Modifier un ModePaiement{% endblock %}
 
 {% block body %}
-    <h1>Edit ModePaiement</h1>
-
-    {{ include('mode_paiement/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('mode_paiement_index') }}">back to list</a>
-
-    {{ include('mode_paiement/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Modifier un Mode de Paiement</h3>
+                    <div class="card-body">
+                        {{ include('mode_paiement/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                        {{ include('mode_paiement/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

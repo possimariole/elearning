@@ -1,4 +1,28 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'role': 'form'}}) }}
+<div class="row">
+	<div class="col-6">
+		<div class="form-group">
+			{# Affichage du label du champ du formulaire. #}
+			{{ form_label(form.debut, "Debut", {'attr': {'class': 'col-form-label', 'for':'debut'}}) }}
+			{# Affichage du champ du formulaire. #}
+			{{ form_widget(form.debut, {'attr': {'class': 'form-control', 'debut':'text', 'id': 'debut'}}) }}
+			{{ form_errors(form.debut) }}
+		</div>
+	</div>
+	{# Affichage des erreurs pour ce champ précis. #}
+		<div class="col-6">
+		<div class="form-group">
+			{{ form_label(form.fin, "Fin", {'attr': {'class': 'col-form-label', 'for':'fin'}}) }}
+			{{ form_widget(form.fin, {'attr': {'class': 'form-control', 'fin':'text', 'id': 'fin'}}) }}
+			{{ form_errors(form.fin) }}
+			</div>
+	</div>
+</div>
+<button class="btn btn-xs btn-success float-right">
+	<i class="fa fa-download"></i>&nbsp;
+	{{ button_label|default('Enregistrer') }}
+</button>
+<a class="btn btn-xs btn-info float-right mr-2" href="{{ path('annee_academique_index') }}">
+	<i class="fa fa-list"></i>&nbsp;Liste</a>
+{{ form_rest(form) }}
 {{ form_end(form) }}

@@ -1,4 +1,29 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'role': 'form'}}) }}
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                {# Affichage du label du champ du formulaire. #}
+                {{ form_label(form.nom, "Nom", {'attr': {'class': 'col-form-label', 'for':'nom'}}) }}
+                
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.nom) }}
+
+                {# Affichage du champ du formulaire. #}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'nom':'text', 'id': 'nom'}}) }}
+         </div>
+        </div>
+            <div class="col-6">
+            <div class="form-group">
+                {{ form_label(form.montantDossier, "MontantDossier", {'attr': {'class': 'col-form-label', 'for':'montantDossier'}}) }}
+                {{ form_widget(form.montantDossier, {'attr': {'class': 'form-control', 'montantDossier':'text', 'id': 'montantDossier'}}) }}
+                {{ form_errors(form.montantDossier) }}
+            </div>
+        </div>
+    </div>                        
+    <button class="btn btn-xs btn-success float-right">
+        <i class="fa fa-download"></i>&nbsp;
+        {{ button_label|default('Enregistrer') }}
+    </button>
+    <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('formation_index') }}"><i class="fa fa-list"></i>&nbsp;Liste</a>
+    {{ form_rest(form) }}
 {{ form_end(form) }}

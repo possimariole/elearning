@@ -1,35 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Niveau index{% endblock %}
+{% block title %}liste des Niveaux {% endblock %}
 
 {% block body %}
-    <h1>Niveau index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for niveau in niveaux %}
-            <tr>
-                <td>{{ niveau.id }}</td>
-                <td>{{ niveau.nom }}</td>
-                <td>
-                    <a href="{{ path('niveau_show', {'id': niveau.id}) }}">show</a>
-                    <a href="{{ path('niveau_edit', {'id': niveau.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('niveau_new') }}">Create new</a>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Liste des niveaux</h3>                    
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for niveau in niveaux %}
+                                    <tr>
+                                        
+                                        <td>{{ niveau.nom }}</td>
+                                        <td>
+                                            <form method="post" action="{{ path('niveau_delete', {'id': niveau.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ niveau.id) }}">
+                                                <button class="btn btn-xs btn-danger float-left mr-2">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            <a class="btn btn-xs btn-info" href="{{ path('niveau_show', {'id': niveau.id}) }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a class="btn btn-xs btn-primary" href="{{ path('niveau_edit', {'id': niveau.id}) }}">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <a class="btn btn-xs btn-primary float-right" href="{{ path('niveau_new') }}">
+                            <i class="fa fa-pencil"></i>&nbsp;Ajouter
+                        </a>
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
