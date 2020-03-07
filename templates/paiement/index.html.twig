@@ -23,7 +23,7 @@
                                     <tr>
                                         
                                         <td>{{ paiement.somme }}</td>
-                                        <td>{{ paiement.date|date('d/m/y') }}</td>
+                                        <td>{{ paiement.date|date('d/m/y')}}</td>
                                         <td>
                                             <form method="post" action="{{ path('paiement_delete', {'id': paiement.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
                                                 <input type="hidden" name="_method" value="DELETE">

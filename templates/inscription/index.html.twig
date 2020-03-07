@@ -23,9 +23,7 @@
                                     <th scope="col">ville</th>
                                     <th scope="col">sexe</th>
                                     <th scope="col">LieuNaissance</th>
-                                    <th scope="col">Telphone</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">BoitePostale</th>
+                                    
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -34,19 +32,17 @@
                                     <tr>
                                        <td>{{ inscription.somme }}</td>
                                         <td>{{ inscription.date|date('d/m/Y') }}</td>
-                                        <td>{{ inscription.AnneeAcademique|date('d/m/Y') }}</td>
+                                        <td>{{ inscription.anneeAcademique|date('d/m/Y') }}</td>
                                         <td>{{ inscription.specialite }}</td>
                                         
-                                        <td>{{ apprenant.nom }}</td>
-                                        <td>{{ apprenant.prenom }}</td>
-                                        <td>{{ apprenant.dateNaiss|date('d/m/Y') }}</td>
-                                        <td>{{ apprenant.pays}}</td>
-                                        <td>{{ apprenant.ville }}</td>
-                                        <td>{{ apprenant.sexe }}</td>
-                                        <td>{{ apprenant.lieuNaissance}}</td>
-                                        <td>{{ adresse.telephone }}</td>
-                                        <td>{{ adresse.email }}</td>
-                                        <td>{{ adresse.boitepostale }}</td>
+                                        <td>{{ inscription.apprenant.nom }}</td>
+                                        <td>{{ inscription.apprenant.prenom }}</td>
+                                        <td>{{ inscription.apprenant.dateNaiss|date('d/m/Y') }}</td>
+                                        <td>{{ inscription.apprenant.pays}}</td>
+                                        <td>{{ inscription.apprenant.ville }}</td>
+                                        <td>{{ inscription.apprenant.sexe }}</td>
+                                        <td>{{ inscription.apprenant.lieuNaissance}}</td>
+                                        
                                         <td>
                                             <form method="post" action="{{ path('inscription_delete', {'id': inscription.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
                                                 <input type="hidden" name="_method" value="DELETE">
