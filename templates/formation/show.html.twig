@@ -1,34 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formation{% endblock %}
+{% block title %}Détail sur la Formation{% endblock %}
 
 {% block body %}
-    <h1>Formation</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ formation.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ formation.nom }}</td>
-            </tr>
-            <tr>
-                <th>MontantInscription</th>
-                <td>{{ formation.montantInscription }}</td>
-            </tr>
-            <tr>
-                <th>MontantDossier</th>
-                <td>{{ formation.montantDossier }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('formation_index') }}">back to list</a>
-
-    <a href="{{ path('formation_edit', {'id': formation.id}) }}">edit</a>
-
-    {{ include('formation/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Détail sur la formation</h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="nom" class="col-form-label">Nom</label>
+                                    <input id="nom" disabled nom="text" class="form-control" value={{ formation.nom }}>
+                                     </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="montantDossier" class="col-form-label">Montant Dossier</label>
+                                    <input id="montantDossier" disabled montantDossier="text" class="form-control" value={{ formation.montantDossier }}>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('formation_edit', {'id': formation.id}) }}">
+                            <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
+                        </a>
+                        <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('formation_index') }}">
+                            <i class="fa fa-list"></i>&nbsp;Liste
+                        </a>
+                        {{ include('formation/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

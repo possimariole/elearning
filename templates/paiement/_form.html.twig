@@ -1,4 +1,35 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'role': 'form'}}) }}
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                {# Affichage du label du champ du formulaire. #}
+                {{ form_label(form.somme, "Somme", {'attr': {'class': 'col-form-label', 'for':'somme'}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.somme) }}
+
+                {# Affichage du champ du formulaire. #}
+                {{ form_widget(form.somme, {'attr': {'class': 'form-control', 'somme':'text', 'id': 'somme'}}) }}
+            </div>
+        </div>
+         <div class="col-6">
+            <div class="form-group">
+            {# Affichage du label du champ du formulaire. #}
+                {{ form_label(form.date, "Date", {'attr': {'class': 'col-form-label', 'for':'date'}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.date) }}
+
+                {# Affichage du champ du formulaire. #}
+                {{ form_widget(form.date, {'attr': {'class': 'form-control', 'date':'text', 'id': 'date'}}) }}
+             </div>
+        </div>
+    </div> 
+   
+    <button class="btn btn-xs btn-success float-right">
+        <i class="fa fa-download"></i>&nbsp;
+        {{ button_label|default('Enregistrer') }}
+    </button>
+    <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('paiement_index') }}"><i class="fa fa-list"></i>&nbsp;Liste</a>
+    {{ form_rest(form) }}
 {{ form_end(form) }}

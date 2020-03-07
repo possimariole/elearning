@@ -23,7 +23,7 @@ class Inscription
      * @ORM\Column(type="float")
      */
     private $somme;
-
+  
     /**
      * @ORM\Column(type="date")
      */
@@ -36,8 +36,7 @@ class Inscription
     
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Note", mappedBy="inscription")
-     * @Assert\Length(min=1)
-     * @Assert\Length(max=2)
+     * 
      */
     private $notes; 
     /**
@@ -54,7 +53,7 @@ class Inscription
     private $niveau;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Apprenant", inversedBy="inscriptions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Apprenant", inversedBy="inscriptions" , cascade={"persist", "remove"})
      * @Assert\NotBlank()
      */
     private $apprenant;

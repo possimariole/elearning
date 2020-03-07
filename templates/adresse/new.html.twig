@@ -3,9 +3,15 @@
 {% block title %}New Adresse{% endblock %}
 
 {% block body %}
-    <h1>Create new Adresse</h1>
-
-    {{ include('adresse/_form.html.twig') }}
-
-    <a href="{{ path('adresse_index') }}">back to list</a>
-{% endblock %}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Ajouter une adresse</h3>
+                    <div class="card-body">
+                        {{ include('adresse/_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>

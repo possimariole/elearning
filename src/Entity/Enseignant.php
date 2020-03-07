@@ -38,7 +38,7 @@ class Enseignant
 
     /**
      * @ORM\Column(type="string", length=255)
-     * * @Assert\Country
+     * @Assert\Country
      */
     private $pays;
 
@@ -247,4 +247,5 @@ class Enseignant
 
         return $this;
     }
+
 }

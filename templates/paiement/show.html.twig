@@ -1,30 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paiement{% endblock %}
+{% block title %}Détail du Paiement{% endblock %}
 
 {% block body %}
-    <h1>Paiement</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ paiement.id }}</td>
-            </tr>
-            <tr>
-                <th>Somme</th>
-                <td>{{ paiement.somme }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ paiement.date ? paiement.date|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('paiement_index') }}">back to list</a>
-
-    <a href="{{ path('paiement_edit', {'id': paiement.id}) }}">edit</a>
-
-    {{ include('paiement/_delete_form.html.twig') }}
+     <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Détail du paiement</h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="somme" class="col-form-label">Somme</label>
+                                    <input id="somme" disabled type="text" class="form-control" value={{ paiement.somme }}>
+                                    </div>
+                            </div>
+                                    <div class="col-6">
+                                <div class="form-group">
+                                    <label for="date" class="col-form-label">Date</label>
+                                    <input id="date" disabled type="text" class="form-control" value={{ paiement.date|date('d/m/y') }}>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('paiement_edit', {'id': paiement.id}) }}">
+                            <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
+                        </a>
+                        <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('paiement_index') }}">
+                            <i class="fa fa-list"></i>&nbsp;Liste
+                        </a>
+                        {{ include('paiement/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

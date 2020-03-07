@@ -1,37 +1,82 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription index{% endblock %}
-
+{% block title %}Inscription {% endblock %}
 {% block body %}
-    <h1>Inscription index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Somme</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for inscription in inscriptions %}
-            <tr>
-                <td>{{ inscription.id }}</td>
-                <td>{{ inscription.somme }}</td>
-                <td>{{ inscription.date ? inscription.date|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('inscription_show', {'id': inscription.id}) }}">show</a>
-                    <a href="{{ path('inscription_edit', {'id': inscription.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('inscription_new') }}">Create new</a>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Liste des formats</h3>                    
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Somme</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">AnneeAcademique</th>
+                                    <th scope="col">Specialite</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prenom</th>
+                                    <th scope="col">DateNaiss</th>
+                                    <th scope="col">pays</th>
+                                    <th scope="col">ville</th>
+                                    <th scope="col">sexe</th>
+                                    <th scope="col">LieuNaissance</th>
+                                    <th scope="col">Telphone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">BoitePostale</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for inscription in inscriptions %}
+                                    <tr>
+                                       <td>{{ inscription.somme }}</td>
+                                        <td>{{ inscription.date|date('d/m/Y') }}</td>
+                                        <td>{{ inscription.AnneeAcademique|date('d/m/Y') }}</td>
+                                        <td>{{ inscription.specialite }}</td>
+                                        
+                                        <td>{{ apprenant.nom }}</td>
+                                        <td>{{ apprenant.prenom }}</td>
+                                        <td>{{ apprenant.dateNaiss|date('d/m/Y') }}</td>
+                                        <td>{{ apprenant.pays}}</td>
+                                        <td>{{ apprenant.ville }}</td>
+                                        <td>{{ apprenant.sexe }}</td>
+                                        <td>{{ apprenant.lieuNaissance}}</td>
+                                        <td>{{ adresse.telephone }}</td>
+                                        <td>{{ adresse.email }}</td>
+                                        <td>{{ adresse.boitepostale }}</td>
+                                        <td>
+                                            <form method="post" action="{{ path('inscription_delete', {'id': inscription.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ inscription.id) }}">
+                                                <button class="btn btn-xs btn-danger float-left mr-2">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            <a class="btn btn-xs btn-info" href="{{ path('inscription_show', {'id': inscription.id}) }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a class="btn btn-xs btn-primary" href="{{ path('inscription_edit', {'id': inscription.id}) }}">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <a class="btn btn-xs btn-primary float-right" href="{{ path('inscription_new') }}">
+                            <i class="fa fa-pencil"></i>&nbsp;Ajouter
+                        </a>
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,50 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Apprenant{% endblock %}
+{% block title %}Détail sur l Apprenant{% endblock %}
 
 {% block body %}
-    <h1>Apprenant</h1>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                     <h3 class="card-header text-uppercase ">Détail sur l'apprenant </h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="nom" class="col-form-label">Nom</label>
+                                    <input id="nom" disabled type="text" class="form-control" value={{ apprenant.nom }}>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ apprenant.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ apprenant.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ apprenant.prenom }}</td>
-            </tr>
-            <tr>
-                <th>DateNaiss</th>
-                <td>{{ apprenant.dateNaiss ? apprenant.dateNaiss|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Pays</th>
-                <td>{{ apprenant.pays }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ apprenant.ville }}</td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ apprenant.sexe }}</td>
-            </tr>
-            <tr>
-                <th>LieuNaissance</th>
-                <td>{{ apprenant.lieuNaissance }}</td>
-            </tr>
-        </tbody>
-    </table>
+                                 </div>
+                            </div>   
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="prenom" class="col-form-label">Prenom</label>
+                                    <input id="prenom" disabled type="text" class="form-control" value={{ apprenant.Prenom }}>
+                                    </div>
+                            </div>   
+                            </div> 
+                             <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="dateNaiss" class="col-form-label">DateNaiss</label>
+                                    <input id="dateNaiss" disabled type="text" class="form-control" value={{ apprenant.dateNaiss|date('d/m/Y')}}>
+                                    </div>
+                            </div>   
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="pays" class="col-form-label">Pays</label>
+                                    <input id="pays" disabled type="text" class="form-control" value={{ apprenant.pays}}>
+                                    </div>
+                            </div>
+                            </div>
+                             <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="vile" class="col-form-label">Ville</label>
+                                    <input id="ville" disabled type="text" class="form-control" value={{ apprenant.ville}}>
+                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="sexe" class="col-form-label">Sexe</label>
+                                    <input id="sexe" disabled type="text" class="form-control" value={{ apprenant.sexe}}>
+                                    </div>
+                            </div>
+                            </div>
+                             <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="lieuNaissance" class="col-form-label">lieuNaissance</label>
+                                    <input id="lieuNaissance" disabled type="text" class="form-control" value={{ apprenant.lieuNaissance}}>
 
-    <a href="{{ path('apprenant_index') }}">back to list</a>
-
-    <a href="{{ path('apprenant_edit', {'id': apprenant.id}) }}">edit</a>
-
-    {{ include('apprenant/_delete_form.html.twig') }}
+                        </div>
+                            </div>
+                            </div>
+                        <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('apprenant_edit', {'id': apprenant.id}) }}">
+                            <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
+                        </a>
+                        <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('apprenant_index') }}">
+                            <i class="fa fa-list"></i>&nbsp;Liste
+                        </a>
+                        {{ include('apprenant/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

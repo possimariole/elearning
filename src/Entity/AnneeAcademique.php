@@ -21,25 +21,25 @@ class AnneeAcademique
 
     /**
      * @ORM\Column(type="integer")
-     * * @Assert\Length(min = 4)
+     * @Assert\Length(min = 4)
      */
     private $debut;
 
     /**
      * @ORM\Column(type="integer")
-     * * @Assert\Length(min = 4)
+     * @Assert\Length(min = 4)
      */
     private $fin;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Inscription", mappedBy="anneeAcademique")
-     * @Assert\Type("float")
+     * 
      */
     private $inscriptions;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Dispenser", mappedBy="anneeAcademique")
-     * @Assert\Blank()
+     * 
      */
     private $dispensers;
 

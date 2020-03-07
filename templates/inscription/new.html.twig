@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Inscription{% endblock %}
+{% block title %}Ajouter une Inscription{% endblock %}
 
 {% block body %}
-    <h1>Create new Inscription</h1>
-
-    {{ include('inscription/_form.html.twig') }}
-
-    <a href="{{ path('inscription_index') }}">back to list</a>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Ajouter une inscription</h3>
+                    <div class="card-body">
+                        {{ include('inscription/_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

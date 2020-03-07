@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Enseignant{% endblock %}
+{% block title %}Ajouter un Enseignant{% endblock %}
 
 {% block body %}
-    <h1>Create new Enseignant</h1>
-
-    {{ include('enseignant/_form.html.twig') }}
-
-    <a href="{{ path('enseignant_index') }}">back to list</a>
+   <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Ajouter un enseignant</h3>
+                    <div class="card-body">
+                        {{ include('enseignant/_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

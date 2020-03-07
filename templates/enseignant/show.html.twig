@@ -1,50 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Enseignant{% endblock %}
+{% block title %}Détail sur l Enseignant{% endblock %}
 
 {% block body %}
-    <h1>Enseignant</h1>
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Détail sur l enseignant</h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="nom" class="col-form-label">Nom</label>
+                                    <input id="nom" disabled type="text" class="form-control" value={{ enseignant.nom }}>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ enseignant.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ enseignant.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ enseignant.prenom }}</td>
-            </tr>
-            <tr>
-                <th>DateNaiss</th>
-                <td>{{ enseignant.dateNaiss ? enseignant.dateNaiss|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Pays</th>
-                <td>{{ enseignant.pays }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ enseignant.ville }}</td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ enseignant.sexe }}</td>
-            </tr>
-            <tr>
-                <th>LieuNaissance</th>
-                <td>{{ enseignant.lieuNaissance }}</td>
-            </tr>
-        </tbody>
-    </table>
+                                 </div>
+                            </div>   
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="prenom" class="col-form-label">Prenom</label>
+                                    <input id="prenom" disabled type="text" class="form-control" value={{ enseignant.Prenom }}>
+                                    </div>
+                            </div> 
+                            </div>  
+                           
+                            <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="dateNaiss" class="col-form-label">DateNaiss</label>
+                                    <input id="dateNaiss" disabled type="text" class="form-control" value={{ enseignant.dateNaiss|date('d/m/Y')}}>
+                                    </div>
+                            </div>   
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="pays" class="col-form-label">Pays</label>
+                                    <input id="pays" disabled type="text" class="form-control" value={{ enseignant.pays}}>
+                                    </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="vile" class="col-form-label">Ville</label>
+                                    <input id="ville" disabled type="text" class="form-control" value={{ enseignant.ville}}>
+                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="sexe" class="col-form-label">Sexe</label>
+                                    <input id="sexe" disabled type="text" class="form-control" value={{ enseignant.sexe}}>
+                                    </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="lieuNaissance" class="col-form-label">lieuNaissance</label>
+                                    <input id="lieuNaissance" disabled type="text" class="form-control" value={{ enseignant.lieuNaissance}}>
 
-    <a href="{{ path('enseignant_index') }}">back to list</a>
-
-    <a href="{{ path('enseignant_edit', {'id': enseignant.id}) }}">edit</a>
-
-    {{ include('enseignant/_delete_form.html.twig') }}
+                        </div>
+                            </div>
+                            </div>
+                        <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('enseignant_edit', {'id': enseignant.id}) }}">
+                            <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
+                        </a>
+                        <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('enseignant_index') }}">
+                            <i class="fa fa-list"></i>&nbsp;Liste
+                        </a>
+                        {{ include('enseignant/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -3,28 +3,36 @@
 {% block title %}Chapitre{% endblock %}
 
 {% block body %}
-    <h1>Chapitre</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ chapitre.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ chapitre.titre }}</td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
-                <td>{{ chapitre.contenu }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('chapitre_index') }}">back to list</a>
-
-    <a href="{{ path('chapitre_edit', {'id': chapitre.id}) }}">edit</a>
-
-    {{ include('chapitre/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Détail sur le chapitre</h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="titre" class="col-form-label">Titre</label>
+                                    <input id="titre" disabled type="text" class="form-control" value={{ chapitre.titre}}>
+                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="contenu" class="col-form-label">Contenu</label>
+                                    <input id="contenu" disabled type="text" class="form-control" value={{ chapitre.contenu }}>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('chapitre_edit', {'id': chapitre.id}) }}">
+                            <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
+                        </a>
+                        <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('chapitre_index') }}">
+                            <i class="fa fa-list"></i>&nbsp;Liste
+                        </a>
+                        {{ include('chapitre/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

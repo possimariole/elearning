@@ -3,28 +3,36 @@
 {% block title %}AnneeAcademique{% endblock %}
 
 {% block body %}
-    <h1>AnneeAcademique</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ annee_academique.id }}</td>
-            </tr>
-            <tr>
-                <th>Debut</th>
-                <td>{{ annee_academique.debut }}</td>
-            </tr>
-            <tr>
-                <th>Fin</th>
-                <td>{{ annee_academique.fin }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('annee_academique_index') }}">back to list</a>
-
-    <a href="{{ path('annee_academique_edit', {'id': annee_academique.id}) }}">edit</a>
-
-    {{ include('annee_academique/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Détail sur l'annee academique </h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="debut" class="col-form-label">Debut</label>
+                                    <input id="debut" disabled type="text" class="form-control" value={{ annee_academique.debut }}>
+                                     </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="fin" class="col-form-label">fin</label>
+                                    <input id="fin" disabled type="text" class="form-control" value={{ annee_academique.fin }}>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('annee_academique_edit', {'id': annee_academique.id}) }}">
+                            <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
+                        </a>
+                        <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('annee_academique_index') }}">
+                            <i class="fa fa-list"></i>&nbsp;Liste
+                        </a>
+                        {{ include('annee_academique/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -32,8 +32,6 @@ class Matiere
 
      /**
      * @ORM\OneToMany(targetEntity="App\Entity\Note", mappedBy="matiere")
-     * @Assert\Length(min=1)
-     * @Assert\Length(max=2)
      */
     private $notes;
 
@@ -180,4 +178,5 @@ class Matiere
 
         return $this;
     }
+
 }

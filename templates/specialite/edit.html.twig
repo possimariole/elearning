@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Specialite{% endblock %}
+{% block title %}Modifier une Specialite{% endblock %}
 
 {% block body %}
-    <h1>Edit Specialite</h1>
-
-    {{ include('specialite/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('specialite_index') }}">back to list</a>
-
-    {{ include('specialite/_delete_form.html.twig') }}
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Modifier une specialite</h3>
+                    <div class="card-body">
+                        {{ include('specialite/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                        {{ include('specialite/_delete_form.html.twig') }}
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

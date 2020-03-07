@@ -21,13 +21,13 @@ class Niveau
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
+     * 
      */
     private $nom;
 
      /**
      * @ORM\OneToMany(targetEntity="App\Entity\Inscription", mappedBy="niveau")
-     * @Assert\Type("float")
+     * 
      */
     private $inscriptions;
 

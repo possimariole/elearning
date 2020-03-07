@@ -1,37 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paiement index{% endblock %}
+{% block title %}Listes des Paiements {% endblock %}
 
 {% block body %}
-    <h1>Paiement index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Somme</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for paiement in paiements %}
-            <tr>
-                <td>{{ paiement.id }}</td>
-                <td>{{ paiement.somme }}</td>
-                <td>{{ paiement.date ? paiement.date|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('paiement_show', {'id': paiement.id}) }}">show</a>
-                    <a href="{{ path('paiement_edit', {'id': paiement.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('paiement_new') }}">Create new</a>
+     <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <h3 class="card-header text-uppercase ">Liste des Paiements</h3>                    
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    
+                                    <th scope="col">Somme</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paiement in paiements %}
+                                    <tr>
+                                        
+                                        <td>{{ paiement.somme }}</td>
+                                        <td>{{ paiement.date|date('d/m/y') }}</td>
+                                        <td>
+                                            <form method="post" action="{{ path('paiement_delete', {'id': paiement.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ paiement.id) }}">
+                                                <button class="btn btn-xs btn-danger float-left mr-2">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            <a class="btn btn-xs btn-info" href="{{ path('paiement_show', {'id': paiement.id}) }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a class="btn btn-xs btn-primary" href="{{ path('paiement_edit', {'id': paiement.id}) }}">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <a class="btn btn-xs btn-primary float-right" href="{{ path('paiement_new') }}">
+                            <i class="fa fa-pencil"></i>&nbsp;Ajouter
+                        </a>
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
