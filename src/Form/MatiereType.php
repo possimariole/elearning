@@ -14,6 +14,7 @@ class MatiereType extends AbstractType
         $builder
             ->add('nom')
             ->add('code')
+            
         ;
     }
 

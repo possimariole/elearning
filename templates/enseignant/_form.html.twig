@@ -28,11 +28,11 @@
 	<div class="col-6">
 		<div class="form-group">
 			{# Affichage du label du champ du formulaire. #}
-			{{ form_label(form.dateNaiss, "DateNaiss", {'attr': {'class': 'col-form-label', 'for':'dateNaiss'}}) }}
+			{{ form_label(form.dateNaiss, "Date de Naissance", {'attr': {'class': 'col-form-label', 'for':'dateNaissance'}}) }}
 
 			{{ form_errors(form.dateNaiss) }}
 
-			{{ form_widget(form.dateNaiss, {'attr': {'class': 'form-control form-control-sm', 'dateNaiss':'text', 'id': 'dateNaiss'}}) }}
+			{{ form_widget(form.dateNaiss, {'attr': {'class': 'form-control form-control-sm', 'type':'date', 'id': 'dateNaissance'}}) }}
 		</div>
 	</div>
 
@@ -86,15 +86,38 @@
 <div class="col-6">
 		<div class="form-group">
 			{# Affichage du label du champ du formulaire. #}
-			{{ form_label(form.telephone, "Telephone", {'attr': {'class': 'col-form-label', 'for':'telephone'}}) }}
+			{{ form_label(form.adresse.telephone, "Telephone", {'attr': {'class': 'col-form-label', 'for':'telephone'}}) }}
 
-			{{ form_errors(form.telephone) }}
+			{{ form_errors(form.adresse.telephone) }}
 
-			{{ form_widget(form.telephone, {'attr': {'class': 'form-control form-control-sm', 'sexe':'text', 'id': 'telephone'}}) }}</div>
+			{{ form_widget(form.adresse.telephone, {'attr': {'class': 'form-control form-control-sm', 'sexe':'text', 'id': 'telephone'}}) }}</div>
 	</div>
 </div>
 
 </div>
+<div class="row">
+	<div class="col-6">
+		<div class="form-group">
+			{# Affichage du label du champ du formulaire. #}
+			{{ form_label(form.adresse.email, "Email", {'attr': {'class': 'col-form-label', 'for':'email'}}) }}
+
+			{{ form_errors(form.adresse.email) }}
+
+			{{ form_widget(form.adresse.email, {'attr': {'class': 'form-control form-control-sm', 'email':'text', 'id': 'email'}}) }}</div>
+	</div>
+</div>
+
+<div class="col-6">
+		<div class="form-group">
+			{# Affichage du label du champ du formulaire. #}
+			{{ form_label(form.adresse.boitePostale, "boitePostale", {'attr': {'class': 'col-form-label', 'for':'boitePostale'}}) }}
+
+			{{ form_errors(form.adresse.boitePostale) }}
+
+			{{ form_widget(form.adresse.boitePostale, {'attr': {'class': 'form-control form-control-sm', 'boitePostale':'text', 'id': 'boitePostale'}}) }}</div>
+	</div>
+</div>
+<div>
 <button class="btn btn-xs btn-success float-right">
 	<i class="fa fa-download"></i>&nbsp;{{ button_label|default('Enregistrer') }}</button>
 <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('enseignant_index') }}">

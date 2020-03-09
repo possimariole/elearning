@@ -1,40 +1,169 @@
-{{ form_start(form, {'attr': {'role': 'form'}}) }}
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group">
-                {# Affichage du label du champ du formulaire. #}
-                {{ form_label(form.somme, "Somme", {'attr': {'class': 'col-form-label', 'for':'somme'}}) }}
 
-                {# Affichage des erreurs pour ce champ précis. #}
-                {{ form_errors(form.somme) }}
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {# Affichage du label du champ du formulaire. #}
+            {{ form_label(form.apprenant.nom, "Nom", {'attr': {'class': 'col-form-label', 'for':'nom'}}) }}
 
-                {# Affichage du champ du formulaire. #}
-                {{ form_widget(form.somme, {'attr': {'class': 'form-control', 'somme':'text', 'id': 'somme'}}) }}
-                </div>
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.apprenant.nom) }}
+
+            {# Affichage du champ du formulaire. #}
+            {{ form_widget(form.apprenant.nom, {'attr': {'class': 'form-control form-control-sm', 'nom':'text', 'id': 'nom'}}) }}
         </div>
-            <div class="col-6">
-            <div class="form-group">
-                {{ form_label(form.date, "Date", {'attr': {'class': 'col-form-label', 'for':'date'}}) }}
-                {{ form_errors(form.date) }}
-                {{ form_widget(form.date, {'attr': {'class': 'form-control', 'date':'text', 'id': 'date'}}) }}
-            </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            {{ form_label(form.apprenant.prenom, "Montant du dossier", {'attr': {'class': 'col-form-label', 'for':'montantDossier'}}) }}
+            {{ form_widget(form.apprenant.prenom, {'attr': {'class': 'form-control form-control-sm', 'type':'text', 'id': 'montantDossier'}}) }}
+            {{ form_errors(form.apprenant.prenom) }}
         </div>
-        
-    </div> 
-         <div class="row">
-        <div class="col-6">
-            <div class="form-group">   
-            {{ form_label(form.anneeAcademique, "AnneeAcademique", {'attr': {'class': 'col-form-label', 'for':'AnneeAcademique'}}) }}
-                {{ form_errors(form.anneeAcademique) }}
-                {{ form_widget(form.anneeAcademique, {'attr': {'class': 'form-control', 'date':'text', 'id': 'AnneeAcademique'}}) }}
-             </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {# Affichage du label du champ du formulaire. #}
+            {{ form_label(form.apprenant.sexe, "Sexe", {'attr': {'class': 'col-form-label', 'for':'sexe'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.apprenant.sexe) }}
+
+            {# Affichage du champ du formulaire. #}
+            {{ form_widget(form.apprenant.sexe, {'attr': {'class': 'form-control form-control-sm', 'type':'text', 'id': 'sexe'}}) }}
         </div>
-        
-    </div>                
-    <button class="btn btn-xs btn-success float-right">
-        <i class="fa fa-download"></i>&nbsp;
-        {{ button_label|default('Enregistrer') }}
-    </button>
-    <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('inscription_index') }}"><i class="fa fa-list"></i>&nbsp;Liste</a>
-    {{ form_rest(form) }}
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            {{ form_label(form.apprenant.lieuNaissance, "Lieu de naissance", {'attr': {'class': 'col-form-label', 'for':'lieunaissance'}}) }}
+            {{ form_widget(form.apprenant.lieuNaissance, {'attr': {'class': 'form-control form-control-sm', 'type':'text', 'id': 'lieunaissance'}}) }}
+            {{ form_errors(form.apprenant.lieuNaissance) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {# Affichage du label du champ du formulaire. #}
+            {{ form_label(form.apprenant.ville, "Ville", {'attr': {'class': 'col-form-label', 'for':'ville'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.apprenant.ville) }}
+
+            {# Affichage du champ du formulaire. #}
+            {{ form_widget(form.apprenant.ville, {'attr': {'class': 'form-control form-control-sm', 'type':'text', 'id': 'ville'}}) }}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            {{ form_label(form.apprenant.dateNaiss, "Date de naissance", {'attr': {'class': 'col-form-label', 'for':'dateNaissance'}}) }}
+            {{ form_widget(form.apprenant.dateNaiss, {'attr': {'class': 'form-control form-control-sm', 'type':'date', 'id': 'dateNaissance'}}) }}
+            {{ form_errors(form.apprenant.dateNaiss) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {# Affichage du label du champ du formulaire. #}
+            {{ form_label(form.niveau, "Niveau", {'attr': {'class': 'col-form-label', 'for':'niveau'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.niveau) }}
+
+            {# Affichage du champ du formulaire. #}
+            {{ form_widget(form.niveau, {'attr': {'class': 'form-control form-control-sm', 'type':'text', 'id': 'niveau'}}) }}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            {{ form_label(form.specialite, "Spécialité", {'attr': {'class': 'col-form-label', 'for':'specialite'}}) }}
+            {{ form_widget(form.specialite, {'attr': {'class': 'form-control form-control-sm', 'type':'text', 'id': 'specialite'}}) }}
+            {{ form_errors(form.specialite) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {# Affichage du label du champ du formulaire. #}
+            {{ form_label(form.somme, "Somme", {'attr': {'class': 'col-form-label', 'for':'somme'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.somme) }}
+
+            {# Affichage du champ du formulaire. #}
+            {{ form_widget(form.somme, {'attr': {'class': 'form-control form-control-sm', 'type':'number', 'id': 'somme'}}) }}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            {{ form_label(form.date, "Date", {'attr': {'class': 'col-form-label', 'for':'date'}}) }}
+            {{ form_errors(form.date) }}
+            {{ form_widget(form.date, {'attr': {'class': 'form-control form-control-sm', 'type':'date', 'id': 'date'}}) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {{ form_label(form.anneeAcademique, "Annee academique", {'attr': {'class': 'col-form-label', 'for':'AnneeAcademique'}}) }}
+            {{ form_errors(form.anneeAcademique) }}
+            {{ form_widget(form.anneeAcademique, {'attr': {'class': 'form-control form-control-sm', 'type':'select', 'id': 'AnneeAcademique'}}) }}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            {# Affichage du label du champ du formulaire. #}
+            {{ form_label(form.apprenant.pays, "Pays", {'attr': {'class': 'col-form-label', 'for':'pays'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.apprenant.pays) }}
+
+            {# Affichage du champ du formulaire. #}
+            {{ form_widget(form.apprenant.pays, {'attr': {'class': 'form-control form-control-sm', 'type':'select', 'id': 'pays'}}) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {{ form_label(form.apprenant.adresse.telephone, "Téléphone", {'attr': {'class': 'col-form-label', 'for':'montantDossier'}}) }}
+            {{ form_widget(form.apprenant.adresse.telephone, {'attr': {'class': 'form-control form-control-sm', 'type':'number', 'id': 'montantDossier'}}) }}
+            {{ form_errors(form.apprenant.adresse.telephone) }}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            {# Affichage du label du champ du formulaire. #}
+            {{ form_label(form.apprenant.adresse.email, "Email", {'attr': {'class': 'col-form-label', 'for':'email'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.apprenant.adresse.email) }}
+
+            {# Affichage du champ du formulaire. #}
+            {{ form_widget(form.apprenant.adresse.email, {'attr': {'class': 'form-control form-control-sm', 'type':'email', 'id': 'email'}}) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {{ form_label(form.apprenant.adresse.boitePostale, "Boite postal", {'attr': {'class': 'col-form-label', 'for':'bp'}}) }}
+            {{ form_widget(form.apprenant.adresse.boitePostale, {'attr': {'class': 'form-control form-control-sm', 'bp':'text', 'id': 'bp'}}) }}
+            {{ form_errors(form.apprenant.adresse.boitePostale) }}
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-xs btn-success float-right">
+    <i class="fa fa-download"></i>&nbsp;
+    {{ button_label|default('Enregistrer') }}
+</button>
+<a class="btn btn-xs btn-info float-right mr-2" href="{{ path('inscription_index') }}"><i class="fa fa-list"></i>&nbsp;Liste</a>
+{{ form_rest(form) }}
+
 {{ form_end(form) }}

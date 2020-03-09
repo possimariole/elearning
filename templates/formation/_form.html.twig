@@ -10,17 +10,17 @@
 
                 {# Affichage du champ du formulaire. #}
                 {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'nom':'text', 'id': 'nom'}}) }}
-         </div>
+            </div>
         </div>
-            <div class="col-6">
+        <div class="col-6">
             <div class="form-group">
-                {{ form_label(form.montantDossier, "MontantDossier", {'attr': {'class': 'col-form-label', 'for':'montantDossier'}}) }}
+                {{ form_label(form.montantDossier, "Montant du dossier", {'attr': {'class': 'col-form-label', 'for':'montantDossier'}}) }}
                 {{ form_widget(form.montantDossier, {'attr': {'class': 'form-control', 'montantDossier':'text', 'id': 'montantDossier'}}) }}
                 {{ form_errors(form.montantDossier) }}
             </div>
         </div>
-    </div>                        
-    <button class="btn btn-xs btn-success float-right">
+    </div>
+<button class="btn btn-xs btn-success float-right">
         <i class="fa fa-download"></i>&nbsp;
         {{ button_label|default('Enregistrer') }}
     </button>
