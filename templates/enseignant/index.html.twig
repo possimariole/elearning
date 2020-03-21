@@ -20,9 +20,8 @@
                                     <th scope="col">ville</th>
                                     <th scope="col">sexe</th>
                                     <th scope="col">LieuNaissance</th>
-                                    <th scope="col">telephone</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col">boitepostale</th>
+                                    
+                                   
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -37,9 +36,8 @@
                                         <td>{{ enseignant.ville }}</td>
                                         <td>{{ enseignant.sexe }}</td>
                                         <td>{{ enseignant.lieuNaissance}}</td>
-                                        <td>{{ enseignant.adresse.telephone}}</td>
-                                         <td>{{ enseignant.adresse.email}}</td>
-                                           <td>{{ enseignant.adresse.boitepostale}}</td>
+                                        
+                                        
                                         
                                         <td>
                                             <form method="post" action="{{ path('enseignant_delete', {'id': enseignant.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">

@@ -10,9 +10,9 @@
 
 			{# Affichage du champ du formulaire. #}
 			{{ form_widget(form.titre, {'attr': {'class': 'form-control', 'titre':'text', 'id': 'titre'}}) }}
-				</div>
+		</div>
 	</div>
-			<div class="col-6">
+		<div class="col-6">
 		<div class="form-group">
 			{# Affichage du label du champ du formulaire. #}
 			{{ form_label(form.contenu, "Contenu", {'attr': {'class': 'col-form-label', 'for':'contenu'}}) }}
@@ -22,8 +22,10 @@
 
 			{# Affichage du champ du formulaire. #}
 			{{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'contenu':'text', 'id': 'contenu'}}) }}
-			</div>
+		</div>
 	</div>
+	</div>
+	<div class="row">
 		<div class="col-6">
 		<div class="form-group">
 			{# Affichage du label du champ du formulaire. #}
@@ -36,7 +38,33 @@
 			{{ form_widget(form.url, {'attr': {'class': 'form-control', 'url':'text', 'id': 'url'}}) }}
 		</div>
 	</div>
+	<div class="col-6">
+		<div class="form-group">
+			{# Affichage du label du champ du formulaire. #}
+			{{ form_label(form.chapitre, "Chapitre", {'attr': {'class': 'col-form-label', 'for':'chapitre'}}) }}
+
+			{# Affichage des erreurs pour ce champ précis. #}
+			{{ form_errors(form.chapitre) }}
+
+			{# Affichage du champ du formulaire. #}
+			{{ form_widget(form.chapitre, {'attr': {'class': 'form-control', 'chapitre':'text', 'id': 'chapitre'}}) }}
+		</div>
+	</div>
 </div>
+<div class="row">
+		<div class="col-6">
+		<div class="form-group">
+			{# Affichage du label du champ du formulaire. #}
+			{{ form_label(form.format, "Format", {'attr': {'class': 'col-form-label', 'for':'format'}}) }}
+
+			{# Affichage des erreurs pour ce champ précis. #}
+			{{ form_errors(form.format) }}
+
+			{# Affichage du champ du formulaire. #}
+			{{ form_widget(form.format, {'attr': {'class': 'form-control', 'format':'text', 'id': 'format'}}) }}
+		</div>
+	</div>
+	</div>
 <button class="btn btn-xs btn-success float-right">
 	<i class="fa fa-download"></i>&nbsp;
 	{{ button_label|default('Enregistrer') }}

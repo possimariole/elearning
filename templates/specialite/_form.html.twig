@@ -12,7 +12,48 @@
                 {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'nom':'text', 'id': 'nom'}}) }}
             </div>
         </div>
-    </div>                        
+
+        <div class="col-6">
+            <div class="form-group">
+                {# Affichage du label du champ du formulaire. #}
+                {{ form_label(form.frais, "Frais", {'attr': {'class': 'col-form-label', 'for':'frais'}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.frais) }}
+
+                {# Affichage du champ du formulaire. #}
+                {{ form_widget(form.frais, {'attr': {'class': 'form-control', 'frais':'text', 'id': 'frais'}}) }}
+            </div>
+        </div>
+    </div>  
+
+     <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                {# Affichage du label du champ du formulaire. #}
+                {{ form_label(form.formation, "Formation", {'attr': {'class': 'col-form-label', 'for':'formation'}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.formation) }}
+
+                {# Affichage du champ du formulaire. #}
+                {{ form_widget(form.formation, {'attr': {'class': 'form-control', 'formation':'text', 'id': 'formation'}}) }}
+            </div>
+        </div>
+
+             <div class="col-6">
+            <div class="form-group">
+                {# Affichage du label du champ du formulaire. #}
+                {{ form_label(form.matieres, "Matiere", {'attr': {'class': 'col-form-label', 'for':'matieres'}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.matieres) }}
+
+                {# Affichage du champ du formulaire. #}
+                {{ form_widget(form.matieres, {'attr': {'class': 'form-control', 'matieres':'text', 'id': 'matieres'}}) }}
+            </div>
+        </div>
+        </div>                      
     <button class="btn btn-xs btn-success float-right">
         <i class="fa fa-download"></i>&nbsp;
         {{ button_label|default('Enregistrer') }}

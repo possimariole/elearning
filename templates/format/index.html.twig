@@ -3,55 +3,35 @@
 {% block title %}Liste des formats{% endblock %}
 
 {% block body %}
-    <div class="container-fluid dashboard-content">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card">
-                    <h3 class="card-header text-uppercase ">Liste des formats</h3>                    
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for format in formats %}
-                                    <tr>
-                                        
-                                        <td>{{ format.type }}</td>
-                                        <td>
-                                            <form method="post" action="{{ path('format_delete', {'id': format.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ format.id) }}">
-                                                <button class="btn btn-xs btn-danger float-left mr-2">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
-                                            <a class="btn btn-xs btn-info" href="{{ path('format_show', {'id': format.id}) }}">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-xs btn-primary" href="{{ path('format_edit', {'id': format.id}) }}">
-                                                <i class="fa fa-pencil-square-o"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="3">no records found</td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                        <hr/>
-                        <a class="btn btn-xs btn-primary float-right" href="{{ path('format_new') }}">
-                            <i class="fa fa-pencil"></i>&nbsp;Ajouter
-                        </a>
-                    </div>                            
-                </div>
-            </div>
-        </div>
-    </div>
+     <h1>Chapitre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chapitre in chapitres %}
+            <tr>
+                <td>{{ chapitre.id }}</td>
+                <td>{{ chapitre.titre }}</td>
+                <td>{{ chapitre.contenu }}</td>
+                <td>
+                    <a href="{{ path('chapitre_show', {'id': chapitre.id}) }}">show</a>
+                    <a href="{{ path('chapitre_edit', {'id': chapitre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('chapitre_new') }}">Create new</a>
 {% endblock %}

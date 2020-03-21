@@ -24,7 +24,22 @@
                 {{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'contenu':'text', 'id': 'contenu'}}) }}
             </div>
         </div>
-    </div>                        
+    </div>  
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                {# Affichage du label du champ du formulaire. #}
+                {{ form_label(form.partie, "Partie", {'attr': {'class': 'col-form-label', 'for':'partie'}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.partie) }}
+
+                {# Affichage du champ du formulaire. #}
+                {{ form_widget(form.partie, {'attr': {'class': 'form-control', 'partie':'text', 'id': 'partie'}}) }}
+                </div>
+        </div>
+        </div>                      
     <button class="btn btn-xs btn-success float-right">
         <i class="fa fa-download"></i>&nbsp;
         {{ button_label|default('Enregistrer') }}

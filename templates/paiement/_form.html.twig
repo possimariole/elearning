@@ -24,7 +24,23 @@
                {{ form_widget(form.date, {'attr': {'class': 'form-control', 'type':'date','id': 'date'}}) }}
              </div>
         </div>
-    </div> 
+    </div>
+
+        <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                {# Affichage du label du champ du formulaire. #}
+                {{ form_label(form.inscription, "Inscription", {'attr': {'class': 'col-form-label', 'for':'inscription'}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.inscription) }}
+
+                {# Affichage du champ du formulaire. #}
+                {{ form_widget(form.inscription, {'attr': {'class': 'form-control', 'inscription':'text', 'id': 'inscription'}}) }}
+            </div>
+        </div>
+
+         <div> 
    
     <button class="btn btn-xs btn-success float-right">
         <i class="fa fa-download"></i>&nbsp;
