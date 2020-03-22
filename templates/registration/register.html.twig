@@ -1,0 +1,43 @@
+{% extends 'security.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {{ form_start(registrationForm) }}
+    <div class="splash-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <a href="#">
+                    <img class="logo-img" src="../assets/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        {{ form_label(registrationForm.email, "Email", {'attr': {'class': 'col-form-label', 'for':'email'}}) }}
+                        {{ form_errors(registrationForm.email) }}
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control form-control-sm', 'type':'email', 'id': 'email'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(registrationForm.plainPassword, "Mot de passe", {'attr': {'class': 'col-form-label', 'for':'password'}}) }}
+                        {{ form_errors(registrationForm.plainPassword) }}
+                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control form-control-sm', 'type':'password', 'id': 'inputPassword', 'name': 'password'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="inputPassword" required class="form-control form-control-lg" placeholder="Confirmation du mot de passe">
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-control custom-checkbox">
+                            {{ form_widget(registrationForm.agreeTerms) }}
+                            {{ form_errors(registrationForm.agreeTerms) }}
+                            {{ form_label(registrationForm.agreeTerms, "Accepter les conditions d'utilisation", {'attr': {'class': 'col-form-label', 'for':'password'}}) }}
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-sm btn-block">S'enregistrer</button>
+                    <button type="submit" class="btn btn-outline-warning btn-sm btn-block">Se connecter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{ form_end(registrationForm) }}
+{% endblock %}

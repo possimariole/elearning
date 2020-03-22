@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/chapitre")
@@ -16,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChapitreController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/", name="chapitre_index", methods={"GET"})
      */
     public function index(ChapitreRepository $chapitreRepository): Response
@@ -26,6 +28,7 @@ class ChapitreController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="chapitre_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -49,6 +52,7 @@ class ChapitreController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="chapitre_show", methods={"GET"})
      */
     public function show(Chapitre $chapitre): Response
@@ -59,6 +63,7 @@ class ChapitreController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="chapitre_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Chapitre $chapitre): Response
@@ -79,6 +84,7 @@ class ChapitreController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="chapitre_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Chapitre $chapitre): Response

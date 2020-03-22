@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Matiere;
 use App\Form\MatiereType;
 use App\Repository\MatiereRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +27,7 @@ class MatiereController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ENSEIGNANT")
      * @Route("/new", name="matiere_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -59,6 +61,7 @@ class MatiereController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ENSEIGNANT")
      * @Route("/{id}/edit", name="matiere_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Matiere $matiere): Response
@@ -79,6 +82,7 @@ class MatiereController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ENSEIGNANT")
      * @Route("/{id}", name="matiere_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Matiere $matiere): Response

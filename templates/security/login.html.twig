@@ -1,0 +1,42 @@
+{% extends 'security.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <div class="splash-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <a href="#">
+                    <img class="logo-img" src="../assets/images/logo.png" alt="logo">
+                </a>
+                {% if error %}
+                    <span class="splash-description alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control form-control-lg" placeholder="Email" autofocus autocomplete="on">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="inputPassword" required class="form-control form-control-lg" placeholder="Mot de passe">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <label class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Se souvenir de moi</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Se connecter</button>
+                </form>
+            </div>
+            <div class="card-footer bg-white p-0  ">
+                <div class="card-footer-item card-footer-item-bordered">
+                    <a href="#" class="footer-link">Créer un compte</a></div>
+                <div class="card-footer-item card-footer-item-bordered">
+                    <a href="#" class="footer-link">Mot de passe oublié</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
