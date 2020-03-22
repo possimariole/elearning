@@ -34,7 +34,7 @@ class Partie
      * @ORM\ManyToOne(targetEntity="App\Entity\Matiere", inversedBy="parties")
      * @Assert\NotBlank()
      */
-    private $Matiere;
+    private $matiere;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Chapitre", mappedBy="partie")
@@ -82,12 +82,12 @@ class Partie
 
     public function getMatiere(): ?Matiere
     {
-        return $this->Matiere;
+        return $this->matiere;
     }
 
-    public function setMatiere(?Matiere $Matiere): self
+    public function setMatiere(?Matiere $matiere): self
     {
-        $this->Matiere = $Matiere;
+        $this->matiere = $matiere;
 
         return $this;
     }

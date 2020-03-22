@@ -16,7 +16,103 @@
                                     <input id="somme" disabled type="text" class="form-control" value={{ inscription.somme }}>
                                 </div>
                             </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="date" class="col-form-label">date</label>
+                                    <input id="date" disabled type="text" class="form-control" value={{ inscription.date|date('d/m/Y') }}>
+                                </div>
+                            </div>
                         </div>
+
+                         <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="AnneeAcademique" class="col-form-label">AnneeAcademique</label>
+                                    <input id="AnneeAcademique" disabled type="text" class="form-control" value={{ inscription.AnneeAcademique }}>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="specialite" class="col-form-label">Specialite</label>
+                                    <input id="specialite" disabled type="text" class="form-control" value={{ inscription.specialite }}>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="nom" class="col-form-label">Nom</label>
+                                    <input id="nom" disabled type="text" class="form-control" value={{ inscription.apprenant.nom }}>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="prenom" class="col-form-label">prenom</label>
+                                    <input id="prenom" disabled type="text" class="form-control" value={{ inscription.apprenant.prenom }}>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="dateNaiss" class="col-form-label">dateNaiss</label>
+                                    <input id="dateNaiss" disabled type="text" class="form-control" value={{ inscription.apprenant.dateNaiss|date('d/m/y') }}>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="pays" class="col-form-label">pays</label>
+                                    <input id="pays" disabled type="text" class="form-control" value={{ inscription.apprenant.pays }}>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="ville" class="col-form-label">ville</label>
+                                    <input id="ville" disabled type="text" class="form-control" value={{ inscription.apprenant.ville }}>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="sexe" class="col-form-label">sexe</label>
+                                    <input id="sexe" disabled type="text" class="form-control" value={{ inscription.apprenant.sexe }}>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="lieuNaissance" class="col-form-label">lieuNaissance</label>
+                                    <input id="lieuNaissance" disabled type="text" class="form-control" value={{ inscription.apprenant.lieuNaissance }}>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="telephone" class="col-form-label">Telephone</label>
+                                    <input id="telephone" disabled type="text" class="form-control" value={{ inscription.adresse.telephone }}>
+                                </div>
+                            </div>
+                            <div>
+
+                            <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Email</label>
+                                    <input id="email" disabled type="text" class="form-control" value={{ inscription.apprenant.email }}>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="boitePostale" class="col-form-label">boitePostale</label>
+                                    <input id="boitePostale" disabled type="text" class="form-control" value={{ inscription.adresse.boitePostale }}>
+                                </div>
+                            </div>
+                            <div>
                         <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('inscription_edit', {'id': inscription.id}) }}">
                             <i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
                         </a>
