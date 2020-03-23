@@ -128,7 +128,7 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/register/enseignant", name="app_apprenant_register")
+     * @Route("/register/enseignant", name="app_enseignant_register")
      */
     public function enseignantRegister(Request $request, UserPasswordEncoderInterface $passwordEncoder,
                              GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator, \Swift_Mailer $mailer): Response
