@@ -16,25 +16,23 @@
                     <div class="form-group">
                         {{ form_label(registrationForm.email, "Email", {'attr': {'class': 'col-form-label', 'for':'email'}}) }}
                         {{ form_errors(registrationForm.email) }}
-                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control form-control-sm', 'type':'email', 'id': 'email'}}) }}
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control form-control-sm', 'type':'email', 'id': 'email', 'name': 'email'}}) }}
                     </div>
                     <div class="form-group">
-                        {{ form_label(registrationForm.plainPassword, "Mot de passe", {'attr': {'class': 'col-form-label', 'for':'password'}}) }}
+                        {{ form_label(registrationForm.plainPassword, "Mot de passe", {'attr': {'class': 'col-form-label', 'for':'plainPassword'}}) }}
                         {{ form_errors(registrationForm.plainPassword) }}
-                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control form-control-sm', 'type':'password', 'id': 'inputPassword', 'name': 'password'}}) }}
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" id="inputPassword" required class="form-control form-control-lg" placeholder="Confirmation du mot de passe">
+                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control form-control-sm', 'type':'password', 'id': 'plainPassword', 'name': 'plainPassword'}}) }}
                     </div>
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">
                             {{ form_widget(registrationForm.agreeTerms) }}
                             {{ form_errors(registrationForm.agreeTerms) }}
-                            {{ form_label(registrationForm.agreeTerms, "Accepter les conditions d'utilisation", {'attr': {'class': 'col-form-label', 'for':'password'}}) }}
+                            {{ form_label(registrationForm.agreeTerms, "Accepter les conditions d'utilisation", {'attr': {'class': 'col-form-label', 'for':'agreeTerms'}}) }}
                         </label>
                     </div>
+                    {{ form_rest(registrationForm) }}
                     <button type="submit" class="btn btn-success btn-sm btn-block">S'enregistrer</button>
-                    <button type="submit" class="btn btn-outline-warning btn-sm btn-block">Se connecter</button>
+                    <a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-sm btn-block">Se connecter</a>
                 </form>
             </div>
         </div>

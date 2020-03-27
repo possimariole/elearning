@@ -21,7 +21,7 @@ class RegistrationController extends AbstractController
      * @Route("/register", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder,
-                             GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator, \Swift_Mailer $mailer): Response
+                             GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -44,7 +44,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            
+
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
@@ -63,7 +63,7 @@ class RegistrationController extends AbstractController
      * @Route("/register/apprenant", name="app_apprenant_register")
      */
     public function apprenantRegister(Request $request, UserPasswordEncoderInterface $passwordEncoder,
-                             GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator, \Swift_Mailer $mailer): Response
+                             GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationApprenantFormType::class, $user);
@@ -86,6 +86,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            /*
             // do anything else you need here, like send an email
             $message = (new \Swift_Message('Activation de votre compte'))
                 //Expéditeur
@@ -100,6 +101,7 @@ class RegistrationController extends AbstractController
             ;
             // Envoie du mail
             $mailer->send($message);
+            */
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
@@ -118,7 +120,7 @@ class RegistrationController extends AbstractController
      * @Route("/register/enseignant", name="app_enseignant_register")
      */
     public function enseignantRegister(Request $request, UserPasswordEncoderInterface $passwordEncoder,
-                             GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator, \Swift_Mailer $mailer): Response
+                             GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationEnseignantFormType::class, $user);
@@ -141,6 +143,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            /*
             // do anything else you need here, like send an email
             $message = (new \Swift_Message('Activation de votre compte'))
                 //Expéditeur
@@ -155,6 +158,7 @@ class RegistrationController extends AbstractController
             ;
             // Envoie du mail
             $mailer->send($message);
+            */
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
