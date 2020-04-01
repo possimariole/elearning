@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Lecon;
 use App\Form\LeconType;
 use App\Repository\LeconRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LeconController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_ENSEIGNANT")
      * @Route("/", name="lecon_index", methods={"GET"})
      */
     public function index(LeconRepository $leconRepository): Response
@@ -59,6 +61,7 @@ class LeconController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ENSEIGNANT")
      * @Route("/{id}/edit", name="lecon_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Lecon $lecon): Response
