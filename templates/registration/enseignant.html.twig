@@ -1,0 +1,136 @@
+{% extends 'security.html.twig' %}
+{% block title %}Register
+{% endblock %}
+{% block body %}
+	{{ form_start(registrationForm) }}
+	<div
+		class="col-9 offset-2">
+		{# <div class="splash-container"> #}
+		<div class="card">
+
+			<div class="card-header text-center">
+				<a href="/">
+					<img class="img-fluid logo-img" src="../assets/images/ktc-center.png" alt="logo">
+				</a>
+			</div>
+			<div class="card-body font-weight-bold">
+				<form method="post">
+					<div class="row">
+						<div class="col-4 ">
+							<div class="form-group ">
+								{{ form_label(registrationForm.email, "Email", {'attr': {'class': 'col-form-label', 'for':'email'}}) }}
+								{{ form_errors(registrationForm.email) }}
+								{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control form-control-sm', 'type':'email', 'id': 'email', 'name': 'email'}}) }}
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.plainPassword, "Mot de passe", {'attr': {'class': 'col-form-label', 'for':'plainPassword'}}) }}
+								{{ form_errors(registrationForm.plainPassword) }}
+								{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control form-control-sm', 'type':'password', 'id': 'plainPassword', 'name': 'plainPassword'}}) }}
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.nom, "nom", {'attr': {'class': 'col-form-label', 'for':'nom'}}) }}
+								{{ form_errors(registrationForm.enseignant.nom) }}
+								{{ form_widget(registrationForm.enseignant.nom, {'attr': {'class': 'form-control form-control-sm', 'nom':'text', 'id': 'nom'}}) }}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.prenom, "Prenom", {'attr': {'class': 'col-form-label', 'for':'prenom'}}) }}
+								{{ form_errors(registrationForm.enseignant.prenom) }}
+								{{ form_widget(registrationForm.enseignant.prenom, {'attr': {'class': 'form-control form-control-sm', 'prenom':'text', 'id': 'prenom'}}) }}
+							</div>
+						</div>
+
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.sexe, "sexe", {'attr': {'class': 'col-form-label', 'for':'sexe'}}) }}
+								{{ form_errors(registrationForm.enseignant.sexe) }}
+								{{ form_widget(registrationForm.enseignant.sexe, {'attr': {'class': 'form-control form-control-sm', 'sexe':'text', 'id': 'sexe'}}) }}
+							</div>
+						</div>
+
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.lieuNaissance, "Lieu de Naissance", {'attr': {'class': 'col-form-label', 'for':'lieuNaissance'}}) }}
+								{{ form_errors(registrationForm.enseignant.lieuNaissance) }}
+								{{ form_widget(registrationForm.enseignant.lieuNaissance, {'attr': {'class': 'form-control form-control-sm', 'lieuNaissance':'text', 'id': 'lieuNaissance'}}) }}
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.pays, "Pays", {'attr': {'class': 'col-form-label', 'for':'pays'}}) }}
+								{{ form_errors(registrationForm.enseignant.pays) }}
+								{{ form_widget(registrationForm.enseignant.pays, {'attr': {'class': 'form-control form-control-sm', 'pays':'text', 'id': 'pays'}}) }}
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.ville, "Ville", {'attr': {'class': 'col-form-label', 'for':'ville'}}) }}
+								{{ form_errors(registrationForm.enseignant.ville) }}
+								{{ form_widget(registrationForm.enseignant.ville, {'attr': {'class': 'form-control form-control-sm', 'ville':'text', 'id': 'ville'}}) }}
+							</div>
+						</div>
+
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.dateNaiss, "Date de Naissance", {'attr': {'class': 'col-form-label', 'for':'dateNaiss'}}) }}
+								{{ form_errors(registrationForm.enseignant.dateNaiss) }}
+								{{ form_widget(registrationForm.enseignant.dateNaiss, {'attr': {'class': 'form-control form-control-sm', 'dateNaiss':'text', 'id': 'dateNaiss'}}) }}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.adresse.telephone, "Telephone", {'attr': {'class': 'col-form-label', 'for':'telephone'}}) }}
+								{{ form_errors(registrationForm.enseignant.adresse.telephone) }}
+								{{ form_widget(registrationForm.enseignant.adresse.telephone, {'attr': {'class': 'form-control form-control-sm', 'telephone':'text', 'id': 'telephone'}}) }}
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.adresse.email, "Email", {'attr': {'class': 'col-form-label', 'for':'date'}}) }}
+								{{ form_errors(registrationForm.enseignant.adresse.email) }}
+								{{ form_widget(registrationForm.enseignant.adresse.email, {'attr': {'class': 'form-control form-control-sm', 'date':'text', 'id': 'date'}}) }}
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-group">
+								{{ form_label(registrationForm.enseignant.adresse.boitePostale, "Boite Postale", {'attr': {'class': 'col-form-label', 'for':'anneeAcademique'}}) }}
+								{{ form_errors(registrationForm.enseignant.adresse.boitePostale) }}
+								{{ form_widget(registrationForm.enseignant.adresse.boitePostale, {'attr': {'class': 'form-control form-control-sm', 'anneeAcademique':'text', 'id': 'anneeAcademique'}}) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="custom-control custom-checkbox">
+							{{ form_widget(registrationForm.agreeTerms) }}
+							{{ form_errors(registrationForm.agreeTerms) }}
+							{{ form_label(registrationForm.agreeTerms, "Accepter les conditions d'utilisation", {'attr': {'class': 'col-form-label', 'for':'agreeTerms'}}) }}
+						</label>
+					</div>
+
+					{{ form_rest(registrationForm) }}
+					<div class="row offset-4">
+						 <div class="col-3 ">
+						<button type="submit" class="btn btn-success btn-sm btn-block ">S'enregistrer</button>
+						 </div>
+						<div class="col-3">
+						<a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-sm btn-block">Se connecter</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{{ form_end(registrationForm) }}{% endblock %}

@@ -51,6 +51,7 @@ class AnneeAcademiqueController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="annee_academique_show", methods={"GET"})
      */
     public function show(AnneeAcademique $anneeAcademique): Response

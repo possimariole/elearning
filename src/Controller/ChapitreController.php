@@ -28,7 +28,7 @@ class ChapitreController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_ENSEIGNANT")
      * @Route("/new", name="chapitre_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -84,7 +84,7 @@ class ChapitreController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_ENSEIGNANT")
      * @Route("/{id}", name="chapitre_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Chapitre $chapitre): Response

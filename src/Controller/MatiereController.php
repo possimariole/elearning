@@ -27,7 +27,7 @@ class MatiereController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ENSEIGNANT")
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="matiere_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

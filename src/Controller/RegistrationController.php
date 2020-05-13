@@ -48,22 +48,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            /*
-            // do anything else you need here, like send an email
-            $message = (new \Swift_Message('Activation de votre compte'))
-                //Expéditeur
-                ->setFrom('smlfolong@gmail.com')
-                //Destinataire
-                ->setTo($user->getEmail())
-                // Contenu du mail
-                ->setBody(
-                    $this->renderView('email/activation.html.twig', ['token' => $user->getActivationToken()]),
-                    'text/html'
-                )
-            ;
-            // Envoie du mail
-            $mailer->send($message);
-            */
+
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
@@ -194,7 +179,7 @@ class RegistrationController extends AbstractController
             );
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('registration/enseignant.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
