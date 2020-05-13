@@ -9,7 +9,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav flex-column">                    
+                <ul class="navbar-nav flex-column">
                     <li class="nav-divider">
                         Administration
                     </li>
@@ -154,7 +154,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>               
+                    </li>
                     <li class="nav-divider">
                         Gestion formation
                     </li>
@@ -166,9 +166,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ path('matiere_index') }}">Liste</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('matiere_new') }}">Ajouter</a>
-                                </li>
+                                {% if is_granted('ROLE_ENSEIGNANT') %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('matiere_new') }}">Ajouter</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </li>
@@ -180,9 +182,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ path('partie_index') }}">Liste</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('partie_new') }}">Ajouter</a>
-                                </li>
+                                {% if is_granted('ROLE_ENSEIGNANT') %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('partie_new') }}">Ajouter</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </li>
@@ -194,9 +198,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ path('chapitre_index') }}">Liste</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('chapitre_new') }}">Ajouter</a>
-                                </li>
+                                {% if is_granted('ROLE_ENSEIGNANT') %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('chapitre_new') }}">Ajouter</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </li>
@@ -208,9 +214,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ path('lecon_index') }}">Liste</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('lecon_new') }}">Ajouter</a>
-                                </li>
+                                {% if is_granted('ROLE_ENSEIGNANT') %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('lecon_new') }}">Ajouter</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </li>

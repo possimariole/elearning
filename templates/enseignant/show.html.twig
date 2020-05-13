@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail sur l Enseignant
-{% endblock %}
+{% block title %}Détail sur l Enseignant{% endblock %}
 
 {% block body %}
 	<div class="container-fluid dashboard-content">
@@ -15,7 +14,6 @@
 								<div class="form-group">
 									<label for="nom" class="col-form-label">Nom</label>
 									<input id="nom" disabled type="text" class="form-control" value={{ enseignant.nom }}>
-
 								</div>
 							</div>
 							<div class="col-6">
@@ -25,7 +23,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
@@ -59,35 +56,57 @@
 								<div class="form-group">
 									<label for="lieuNaissance" class="col-form-label">lieu de Naissance</label>
 									<input id="lieuNaissance" disabled type="text" class="form-control" value={{ enseignant.lieuNaissance}}>
-
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
 									<label for="telephone" class="col-form-label">Telephone</label>
 									<input id="telephone" disabled type="text" class="form-control" value={{ enseignant.adresse.telephone}}>
-
 								</div>
 							</div>
 						</div>
-
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
 									<label for="email" class="col-form-label">Email</label>
 									<input id="email" disabled type="text" class="form-control" value={{ enseignant.adresse.email}}>
-
 								</div>
 							</div>
-							
                             <div class="col-6">
 								<div class="form-group">
 									<label for="boitePostale" class="col-form-label">Boite Postale</label>
 									<input id="boitePostale" disabled type="text" class="form-control" value={{ enseignant.adresse.boitePostale}}>
-
 								</div>
 							</div>
 							<div>
+
+							</div>
+						</div>
+						<div class="row mt-4">
+							<div class="col-12">
+								<h3 class="text-uppercase">Diplomes</h3>
+								<table class="table table-hover table-bordered" id="table">
+									<thead>
+										<tr>
+											<th scope="col">Nom</th>
+											<th scope="col">Session</th>
+											<th scope="col">Mention</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for diplome in enseignant.diplomes %}
+											<tr>
+												<td>{{ diplome.nom }}</td>
+												<td>{{ diplome.session }}</td>
+												<td>{{ diplome.mention }}</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-12">
 								<a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('enseignant_edit', {'id': enseignant.id}) }}">
 									<i class="fa fa-pencil-square-o"></i>&nbsp;Modifier
 								</a>
@@ -100,4 +119,6 @@
 					</div>
 				</div>
 			</div>
-		{% endblock %}
+		</div>
+	</div>
+{% endblock %}

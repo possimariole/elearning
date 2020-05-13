@@ -12,7 +12,6 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    
                                     <th scope="col">Nom</th>
                                     <th scope="col">Prenom</th>
                                     <th scope="col">DateNaiss</th>
@@ -20,15 +19,12 @@
                                     <th scope="col">ville</th>
                                     <th scope="col">sexe</th>
                                     <th scope="col">LieuNaissance</th>
-                                    
-                                   
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for enseignant in enseignants %}
                                     <tr>
-                                        
                                         <td>{{ enseignant.nom }}</td>
                                         <td>{{ enseignant.prenom }}</td>
                                         <td>{{ enseignant.dateNaiss|date('d/m/Y') }}</td>
@@ -36,9 +32,6 @@
                                         <td>{{ enseignant.ville }}</td>
                                         <td>{{ enseignant.sexe }}</td>
                                         <td>{{ enseignant.lieuNaissance}}</td>
-                                        
-                                        
-                                        
                                         <td>
                                             <form method="post" action="{{ path('enseignant_delete', {'id': enseignant.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
                                                 <input type="hidden" name="_method" value="DELETE">

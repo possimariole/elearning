@@ -37,12 +37,47 @@ class Partie
     private $matiere;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Chapitre", mappedBy="partie")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Chapitre", inversedBy="parties")
+     * @ORM\JoinColumn(name="chapitre_id", referencedColumnName="id")
      */
-    private $chapitres;
+    private $chapitre;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_active;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_delete;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="parties")
+     */
+    private $createdBy;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\UserOption", mappedBy="partie", cascade={"persist", "remove"})
+     */
+    private $userOption;
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->is_active = true;
+        $this->is_delete = false;
         $this->chapitres = new ArrayCollection();
     }
 
@@ -92,32 +127,91 @@ class Partie
         return $this;
     }
 
-    /**
-     * @return Collection|Chapitre[]
-     */
-    public function getChapitres(): Collection
+    public function getChapitre(): ?Chapitre
     {
-        return $this->chapitres;
+        return $this->chapitre;
     }
 
-    public function addChapitre(Chapitre $chapitre): self
+    public function setChapitre(?Chapitre $chapitre): self
     {
-        if (!$this->chapitres->contains($chapitre)) {
-            $this->chapitres[] = $chapitre;
-            $chapitre->setPartie($this);
-        }
+        $this->chapitre = $chapitre;
 
         return $this;
     }
 
-    public function removeChapitre(Chapitre $chapitre): self
+    public function getIsActive(): ?bool
     {
-        if ($this->chapitres->contains($chapitre)) {
-            $this->chapitres->removeElement($chapitre);
-            // set the owning side to null (unless already changed)
-            if ($chapitre->getPartie() === $this) {
-                $chapitre->setPartie(null);
-            }
+        return $this->is_active;
+    }
+
+    public function setIsActive(bool $is_active): self
+    {
+        $this->is_active = $is_active;
+
+        return $this;
+    }
+
+    public function getIsDelete(): ?bool
+    {
+        return $this->is_delete;
+    }
+
+    public function setIsDelete(bool $is_delete): self
+    {
+        $this->is_delete = $is_delete;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): self
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getUserOption(): ?UserOption
+    {
+        return $this->userOption;
+    }
+
+    public function setUserOption(?UserOption $userOption): self
+    {
+        $this->userOption = $userOption;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newPartie = null === $userOption ? null : $this;
+        if ($userOption->getPartie() !== $newPartie) {
+            $userOption->setPartie($newPartie);
         }
 
         return $this;

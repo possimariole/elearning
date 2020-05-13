@@ -39,6 +39,10 @@ class RegistrationController extends AbstractController
             // Génération du token d'activation du compte utilisateur
             $user->setActivationToken(md5(uniqid()));
             $user->setRoles(['ROLE_ADMIN']);
+            $user->setCreatedAt(new \DateTime());
+            $user->setUpdatedAt(new \DateTime());
+            $user->setIsActive(true);
+            $user->setIsDelete(false);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -96,6 +100,10 @@ class RegistrationController extends AbstractController
 
             // Génération du token d'activation du compte utilisateur
             $user->setActivationToken(md5(uniqid()));
+            $user->setCreatedAt(new \DateTime());
+            $user->setUpdatedAt(new \DateTime());
+            $user->setIsActive(false);
+            $user->setIsDelete(false);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -150,7 +158,10 @@ class RegistrationController extends AbstractController
                 )
             );
             $user->setRoles(['ROLE_ENSEIGNANT']);
-
+            $user->setCreatedAt(new \DateTime());
+            $user->setUpdatedAt(new \DateTime());
+            $user->setIsActive(false);
+            $user->setIsDelete(false);
             // Génération du token d'activation du compte utilisateur
             $user->setActivationToken(md5(uniqid()));
 

@@ -2,19 +2,31 @@
 
 namespace App\Controller;
 
+use App\Entity\Adresse;
 use App\Entity\Enseignant;
+use App\Entity\Diplome;
 use App\Form\EnseignantType;
 use App\Repository\EnseignantRepository;
+use App\Services\Impl\AdresseService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/enseignant")
  */
 class EnseignantController extends AbstractController
 {
+
+    private $adresseService;
+
+    public function __construct(AdresseService $service)
+    {
+        $this->adresseService = $service;
+    }
+    
     /**
      * @Route("/", name="enseignant_index", methods={"GET"})
      */
@@ -28,15 +40,21 @@ class EnseignantController extends AbstractController
     /**
      * @Route("/new", name="enseignant_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Security $security): Response
     {
         $enseignant = new Enseignant();
+        $adresse = new Adresse();
         $form = $this->createForm(EnseignantType::class, $enseignant);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            
+            $user = $security->getUser();
+            $adresse->setTelephone($enseignant->getAdresse()->getTelephone());
+            $adresse->setBoitePostale($enseignant->getAdresse()->getBoitePostale());
+            $adresse->setEmail($enseignant->getAdresse()->getEmail());
+            $this->adresseService->save($adresse);
+            $enseignant->setCreatedBy($user);
             $entityManager->persist($enseignant);
             $entityManager->flush();
 

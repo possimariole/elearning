@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Diplome;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,10 +13,27 @@ class DiplomeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('session')
-            ->add('mention')
-            ->add('enseignant')
+            ->add('nom', TextType::class, [
+                'label'  => false,
+                'attr' => [
+                    'class' => 'form-control form-control-sm',
+                    'id' => 'nom'
+                ]
+            ])
+            ->add('session', TextType::class, [
+                'label'  => false,
+                'attr' => [
+                    'class' => 'form-control form-control-sm',
+                    'id' => 'session'
+                ]
+            ])
+            ->add('mention', TextType::class, [
+                'label'  => false,
+                'attr' => [
+                    'class' => 'form-control form-control-sm',
+                    'id' => 'mention'
+                ]
+            ])
         ;
     }
 

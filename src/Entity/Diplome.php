@@ -39,6 +39,39 @@ class Diplome
      */
     private $enseignant;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default":true})
+     */
+    private $is_active;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $is_delete;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="diplomes")
+     */
+    private $createdBy;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->is_active = true;
+        $this->is_delete = false;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,6 +126,66 @@ class Diplome
     public function setEnseignant(?Enseignant $enseignant): self
     {
         $this->enseignant = $enseignant;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->is_active;
+    }
+
+    public function setIsActive(bool $is_active): self
+    {
+        $this->is_active = $is_active;
+
+        return $this;
+    }
+
+    public function getIsDelete(): ?bool
+    {
+        return $this->is_delete;
+    }
+
+    public function setIsDelete(bool $is_delete): self
+    {
+        $this->is_delete = $is_delete;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): self
+    {
+        $this->createdBy = $createdBy;
 
         return $this;
     }

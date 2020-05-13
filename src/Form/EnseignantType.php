@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Form\DiplomeType;
 use App\Entity\Enseignant;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -28,6 +30,15 @@ class EnseignantType extends AbstractType
             ->add('sexe')
             ->add('lieuNaissance') 
             ->add('adresse', AdresseType::class)
+            ->add('diplomes', CollectionType::class, [
+                'entry_type' => DiplomeType::class,
+                'entry_options' => [
+                    'label' => false
+                ],
+                'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true
+            ])
         ;
     }
 

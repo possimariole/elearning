@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/adresse")
@@ -28,7 +29,7 @@ class AdresseController extends AbstractController
     /**
      * @Route("/new", name="adresse_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Security $security): Response
     {
         $adresse = new Adresse();
         $form = $this->createForm(AdresseType::class, $adresse);
@@ -36,6 +37,8 @@ class AdresseController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $user = $security->getUser();
+            $adresse->setCreatedBy($user);
             $entityManager->persist($adresse);
             $entityManager->flush();
 
