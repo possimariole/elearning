@@ -10,154 +10,156 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
-                    <li class="nav-divider">
-                        Administration
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#config" aria-controls="config">
-                        <i class="fa fa-cog"></i>Configuration</a>
-                        <div id="config" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#annee-academique" aria-controls="annee-academique">
-                                    <i class="fa fa-calendar"></i>Année academique</a>
-                                    <div id="annee-academique" class="collapse submenu" style="">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('annee_academique_index') }}">Liste</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('annee_academique_new') }}">Ajouter</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#formation" aria-controls="formation">
-                                    <i class="fa fa-briefcase"></i>Formation</a>
-                                    <div id="formation" class="collapse submenu" style="">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('formation_index') }}">Liste</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('formation_new') }}">Ajouter</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#format" aria-controls="format">
-                                    <i class="fa fa-sticky-note"></i>Format</a>
-                                    <div id="format" class="collapse submenu" style="">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('format_index') }}">Liste</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('format_new') }}">Ajouter</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#niveau" aria-controls="niveau">
-                                    <i class="fa fa-cubes"></i>Niveau</a>
-                                    <div id="niveau" class="collapse submenu" style="">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('niveau_index') }}">Liste</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('niveau_new') }}">Ajouter</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#specialite" aria-controls="specialite">
-                                    <i class="fa fa-tags"></i>Spécialité</a>
-                                    <div id="specialite" class="collapse submenu" style="">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('specialite_index') }}">Liste</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('specialite_new') }}">Ajouter</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#enseignant" aria-controls="enseignant">
-                        <i class="fa fa-user"></i>Enseignant</a>
-                        <div id="enseignant" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('enseignant_index') }}">Liste</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('enseignant_new') }}">Ajouter</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#apprenant" aria-controls="apprenant">
-                        <i class="fa fa-users"></i>Apprenant</a>
-                        <div id="apprenant" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('inscription_index') }}">Liste</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('inscription_new') }}">Ajouter</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#paiements" aria-controls="paiements">
-                        <i class="fa fa-credit-card-alt"></i>Paiement</a>
-                        <div id="paiements" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#mode_paiement" aria-controls="mode_paiement">
-                                    <i class="fa fa-credit-card-alt"></i>Mode de paiement</a>
-                                    <div id="mode_paiement" class="collapse submenu" style="">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('mode_paiement_index') }}">Liste</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('mode_paiement_new') }}">Ajouter</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#paiement" aria-controls="paiement">
-                                    <i class="fa fa-cc-discover"></i>Paiement</a>
-                                    <div id="paiement" class="collapse submenu" style="">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('paiement_index') }}">Liste</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ path('paiement_new') }}">Ajouter</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-divider">
-                        Gestion formation
-                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-divider">
+                            Administration
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#config" aria-controls="config">
+                            <i class="fa fa-cog"></i>Configuration</a>
+                            <div id="config" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#annee-academique" aria-controls="annee-academique">
+                                        <i class="fa fa-calendar"></i>Année academique</a>
+                                        <div id="annee-academique" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('annee_academique_index') }}">Liste</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('annee_academique_new') }}">Ajouter</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#formation" aria-controls="formation">
+                                        <i class="fa fa-briefcase"></i>Formation</a>
+                                        <div id="formation" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('formation_index') }}">Liste</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('formation_new') }}">Ajouter</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#format" aria-controls="format">
+                                        <i class="fa fa-sticky-note"></i>Format</a>
+                                        <div id="format" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('format_index') }}">Liste</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('format_new') }}">Ajouter</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#niveau" aria-controls="niveau">
+                                        <i class="fa fa-cubes"></i>Niveau</a>
+                                        <div id="niveau" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('niveau_index') }}">Liste</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('niveau_new') }}">Ajouter</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#specialite" aria-controls="specialite">
+                                        <i class="fa fa-tags"></i>Spécialité</a>
+                                        <div id="specialite" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('specialite_index') }}">Liste</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('specialite_new') }}">Ajouter</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#enseignant" aria-controls="enseignant">
+                            <i class="fa fa-user"></i>Enseignant</a>
+                            <div id="enseignant" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('enseignant_index') }}">Liste</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('enseignant_new') }}">Ajouter</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#apprenant" aria-controls="apprenant">
+                            <i class="fa fa-users"></i>Apprenant</a>
+                            <div id="apprenant" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('inscription_index') }}">Liste</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('inscription_new') }}">Ajouter</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#paiements" aria-controls="paiements">
+                            <i class="fa fa-credit-card-alt"></i>Paiement</a>
+                            <div id="paiements" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#mode_paiement" aria-controls="mode_paiement">
+                                        <i class="fa fa-credit-card-alt"></i>Mode de paiement</a>
+                                        <div id="mode_paiement" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('mode_paiement_index') }}">Liste</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('mode_paiement_new') }}">Ajouter</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#paiement" aria-controls="paiement">
+                                        <i class="fa fa-cc-discover"></i>Paiement</a>
+                                        <div id="paiement" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('paiement_index') }}">Liste</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('paiement_new') }}">Ajouter</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-divider">
+                            Gestion formation
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#matiere" aria-controls="matiere">
                         <i class="fa fa-book"></i>Matière</a>
@@ -174,54 +176,56 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#partie" aria-controls="partie">
-                        <i class="fa fa-bookmark"></i>Partie</a>
-                        <div id="partie" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('partie_index') }}">Liste</a>
-                                </li>
-                                {% if is_granted('ROLE_ENSEIGNANT') %}
+                    {% if is_granted('ROLE_ENSEIGNANT') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#partie" aria-controls="partie">
+                            <i class="fa fa-bookmark"></i>Partie</a>
+                            <div id="partie" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ path('partie_new') }}">Ajouter</a>
+                                        <a class="nav-link" href="{{ path('partie_index') }}">Liste</a>
                                     </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#chapitre" aria-controls="chapitre">
-                        <i class="fa fa-bookmark"></i>Chapitre</a>
-                        <div id="chapitre" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('chapitre_index') }}">Liste</a>
-                                </li>
-                                {% if is_granted('ROLE_ENSEIGNANT') %}
+                                    {% if is_granted('ROLE_ENSEIGNANT') %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ path('partie_new') }}">Ajouter</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#chapitre" aria-controls="chapitre">
+                            <i class="fa fa-bookmark"></i>Chapitre</a>
+                            <div id="chapitre" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ path('chapitre_new') }}">Ajouter</a>
+                                        <a class="nav-link" href="{{ path('chapitre_index') }}">Liste</a>
                                     </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#lecon" aria-controls="lecon">
-                        <i class="fa fa-leanpub"></i>Leçon</a>
-                        <div id="lecon" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('lecon_index') }}">Liste</a>
-                                </li>
-                                {% if is_granted('ROLE_ENSEIGNANT') %}
+                                    {% if is_granted('ROLE_ENSEIGNANT') %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ path('chapitre_new') }}">Ajouter</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#lecon" aria-controls="lecon">
+                            <i class="fa fa-leanpub"></i>Leçon</a>
+                            <div id="lecon" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ path('lecon_new') }}">Ajouter</a>
+                                        <a class="nav-link" href="{{ path('lecon_index') }}">Liste</a>
                                     </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </li>
+                                    {% if is_granted('ROLE_ENSEIGNANT') %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ path('lecon_new') }}">Ajouter</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

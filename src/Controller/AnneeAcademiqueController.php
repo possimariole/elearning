@@ -45,6 +45,8 @@ class AnneeAcademiqueController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $user = $this->security->getUser();
+            $anneeAcademique->setCreatedBy($user);
             $entityManager->persist($anneeAcademique);
             $entityManager->flush();
 

@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Inscription;
+use App\Entity\Apprenant;
+use App\Entity\Adresse;
 use App\Form\InscriptionType;
 use App\Repository\InscriptionRepository;
+use App\Services\Impl\ApprenantService;
+use App\Services\Impl\AdresseService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +19,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class InscriptionController extends AbstractController
 {
+
+    private $apprenantService;
+    private $adresseService;
+
+    public function __construct(ApprenantService $apprenantService, AdresseService $adresseService)
+    {
+        $this->apprenantService = $apprenantService;
+        $this->adresseService = $adresseService;
+    }
+
     /**
      * @Route("/", name="inscription_index", methods={"GET"})
      */
@@ -31,11 +45,29 @@ class InscriptionController extends AbstractController
     public function new(Request $request): Response
     {
         $inscription = new Inscription();
+        $apprenant = new Apprenant();
+        $adresse = new Adresse();
         $form = $this->createForm(InscriptionType::class, $inscription);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $apprenant->setNom($inscription->getApprenant()->getNom());
+            $apprenant->setPrenom($inscription->getApprenant()->getPrenom());
+            $apprenant->setDateNaiss($inscription->getApprenant()->getDateNass());
+            $apprenant->setPays($inscription->getApprenant()->getPays());
+            $apprenant->setVille($inscription->getApprenant()->getVille());
+            $apprenant->setSexe($inscription->getApprenant()->getSexe());
+            $apprenant->setLieuNaissance($inscription->getApprenant()->getLieuNaissance());
+
+            $adresse->setEmail($inscription->getApprenant()->getAdresse()->getEmail());
+            $adresse->setTelephone($inscription->getApprenant()->getAdresse()->getTelephone());
+            $adresse->setBoitePostale($inscription->getApprenant()->getAdresse()->getBoitePostale());
+
+            $this->adresseService->save($adresse);
+            $this->apprenantService->save($apprenant);
+
             $entityManager->persist($inscription);
             $entityManager->flush();
 

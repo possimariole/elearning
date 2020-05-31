@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ApprenantRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Apprenant
 {
@@ -99,6 +100,17 @@ class Apprenant
      * @ORM\OneToOne(targetEntity="App\Entity\UserOption", mappedBy="apprenant", cascade={"persist", "remove"})
      */
     private $userOption;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->is_active = true;
+        $this->is_delete = false;
+    }
 
     public function __construct()
     {

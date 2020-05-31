@@ -85,31 +85,76 @@ class AnneeAcademique
         return $this->id;
     }
 
-    public function getFin(): ?int
+    public function getDebut(): ?\DateTimeInterface
+    {
+        return $this->debut;
+    }
+
+    public function setDebut(\DateTimeInterface $debut): self
+    {
+        $this->debut = $debut;
+
+        return $this;
+    }
+
+    public function getFin(): ?\DateTimeInterface
     {
         return $this->fin;
     }
 
-    public function setFin(int $fin): self
+    public function setFin(\DateTimeInterface $fin): self
     {
         $this->fin = $fin;
 
         return $this;
     }
 
-    public function addInscription(Inscription $inscription)
+    public function getIsActive(): ?bool
     {
-        if(!$this->inscriptions->contains($inscription))
-        {
-            $this->inscriptions[] = $inscription;
-            $inscription->setAnneeAcademique($this);
-        }
+        return $this->is_active;
+    }
+
+    public function setIsActive(bool $is_active): self
+    {
+        $this->is_active = $is_active;
+
         return $this;
     }
 
-    public function __toString()
+    public function getIsDelete(): ?bool
     {
-        return (string)$this->debut;
+        return $this->is_delete;
+    }
+
+    public function setIsDelete(bool $is_delete): self
+    {
+        $this->is_delete = $is_delete;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 
     /**
@@ -118,6 +163,16 @@ class AnneeAcademique
     public function getInscriptions(): Collection
     {
         return $this->inscriptions;
+    }
+
+    public function addInscription(Inscription $inscription): self
+    {
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions[] = $inscription;
+            $inscription->setAnneeAcademique($this);
+        }
+
+        return $this;
     }
 
     public function removeInscription(Inscription $inscription): self
@@ -164,66 +219,6 @@ class AnneeAcademique
         return $this;
     }
 
-    public function getIsActive(): ?bool
-    {
-        return $this->is_active;
-    }
-
-    public function setIsActive(bool $is_active): self
-    {
-        $this->is_active = $is_active;
-
-        return $this;
-    }
-
-    public function getIsDelete(): ?bool
-    {
-        return $this->is_delete;
-    }
-
-    public function setIsDelete(bool $is_delete): self
-    {
-        $this->is_delete = $is_delete;
-
-        return $this;
-    }
-
-    public function getDebut(): ?\DateTimeInterface
-    {
-        return $this->debut;
-    }
-
-    public function setDebut(\DateTimeInterface $debut): self
-    {
-        $this->debut = $debut;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
     public function getCreatedBy(): ?User
     {
         return $this->createdBy;
@@ -234,5 +229,9 @@ class AnneeAcademique
         $this->createdBy = $createdBy;
 
         return $this;
+    }
+    
+    public function __toString() {
+        return $this->fin->format('Y');
     }
 }

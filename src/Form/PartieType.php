@@ -14,7 +14,6 @@ class PartieType extends AbstractType
         $builder
             ->add('titre')
             ->add('contenu')
-            ->add('Matiere')
         ;
     }
 

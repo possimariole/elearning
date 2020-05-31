@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Adresse;
+use App\Entity\Apprenant;
 use App\Entity\User;
 use App\Form\RegistrationApprenantFormType;
 use App\Form\RegistrationEnseignantFormType;
@@ -70,6 +72,8 @@ class RegistrationController extends AbstractController
                              GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator): Response
     {
         $user = new User();
+        $apprenant = new Apprenant();
+        $adresse = new Adresse();
         $form = $this->createForm(RegistrationApprenantFormType::class, $user);
         $form->handleRequest($request);
 

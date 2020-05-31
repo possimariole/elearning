@@ -12,14 +12,14 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="debut" class="col-form-label">Debut</label>
-                                    <input id="debut" disabled type="text" class="form-control" value={{ annee_academique.debut }}>
-                                     </div>
+                                    <label for="debut" class="col-form-label">Début</label>
+                                    <input id="debut" disabled type="text" class="form-control form-control-sm" value={{ annee_academique.debut|date('d/m/Y') }}>
+                                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="fin" class="col-form-label">fin</label>
-                                    <input id="fin" disabled type="text" class="form-control" value={{ annee_academique.fin }}>
+                                    <label for="fin" class="col-form-label">Fin</label>
+                                    <input id="fin" disabled type="text" class="form-control form-control-sm" value={{ annee_academique.fin|date('d/m/Y') }}>
                                 </div>
                             </div>
                         </div>

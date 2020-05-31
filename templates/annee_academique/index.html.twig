@@ -22,8 +22,8 @@
                                 {% for annee_academique in annee_academiques %}
                                     <tr>
                                         <td>{{ annee_academique.id }}</td>
-                                        <td>{{ annee_academique.debut }}</td>
-                                        <td>{{ annee_academique.fin }}</td>
+                                        <td>{{ annee_academique.debut|date('d/m/Y') }}</td>
+                                        <td>{{ annee_academique.fin|date('d/m/Y') }}</td>
                                         <td>
                                             <form method="post" action="{{ path('annee_academique_delete', {'id': annee_academique.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
                                                 <input type="hidden" name="_method" value="DELETE">
