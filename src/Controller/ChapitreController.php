@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/chapitre")
@@ -31,7 +32,7 @@ class ChapitreController extends AbstractController
      * @IsGranted("ROLE_ENSEIGNANT")
      * @Route("/new", name="chapitre_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Security $security): Response
     {
         $chapitre = new Chapitre();
         $form = $this->createForm(ChapitreType::class, $chapitre);
@@ -39,6 +40,8 @@ class ChapitreController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $user = $security->getUser();
+            $chapitre->setCreatedBy($user);
             $entityManager->persist($chapitre);
             $entityManager->flush();
 

@@ -2,44 +2,28 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                {# Affichage du label du champ du formulaire. #}
                 {{ form_label(form.titre, "Titre", {'attr': {'class': 'col-form-label', 'for':'titre'}}) }}
-
-                {# Affichage des erreurs pour ce champ précis. #}
                 {{ form_errors(form.titre) }}
-
-                {# Affichage du champ du formulaire. #}
-                {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'titre':'text', 'id': 'titre'}}) }}
-                </div>
-        </div>
-                <div class="col-6">
-            <div class="form-group">
-                {# Affichage du label du champ du formulaire. #}
-                {{ form_label(form.contenu, "Contenu", {'attr': {'class': 'col-form-label', 'for':'contenu'}}) }}
-
-                {# Affichage des erreurs pour ce champ précis. #}
-                {{ form_errors(form.contenu) }}
-
-                {# Affichage du champ du formulaire. #}
-                {{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'contenu':'text', 'id': 'contenu'}}) }}
+                {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'type':'text', 'id': 'titre'}}) }}
             </div>
         </div>
-    </div>  
-
-    <div class="row">
         <div class="col-6">
             <div class="form-group">
-                {# Affichage du label du champ du formulaire. #}
-                {{ form_label(form.partie, "Partie", {'attr': {'class': 'col-form-label', 'for':'partie'}}) }}
-
-                {# Affichage des erreurs pour ce champ précis. #}
-                {{ form_errors(form.partie) }}
-
-                {# Affichage du champ du formulaire. #}
-                {{ form_widget(form.partie, {'attr': {'class': 'form-control', 'partie':'text', 'id': 'partie'}}) }}
-                </div>
+                {{ form_label(form.parties, "Partie", {'attr': {'class': 'col-form-label', 'for':'partie'}}) }}
+                {{ form_errors(form.parties) }}
+                {{ form_widget(form.parties, {'attr': {'class': 'form-control', 'type':'text', 'id': 'partie'}}) }}
+            </div>
         </div>
-        </div>                      
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                {{ form_label(form.contenu, "Contenu", {'attr': {'class': 'col-form-label', 'for':'contenu'}}) }}
+                {{ form_errors(form.contenu) }}
+                {{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'type':'textarea', 'id': 'contenu', 'rows': '10'}}) }}
+            </div>
+        </div>
+    </div>                      
     <button class="btn btn-xs btn-success float-right">
         <i class="fa fa-download"></i>&nbsp;
         {{ button_label|default('Enregistrer') }}

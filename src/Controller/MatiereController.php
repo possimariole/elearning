@@ -38,6 +38,9 @@ class MatiereController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            foreach($request->get('parties') as $partie) {
+                $matiere->addParty($partie);
+            }
             $entityManager->persist($matiere);
             $entityManager->flush();
 
@@ -53,10 +56,13 @@ class MatiereController extends AbstractController
     /**
      * @Route("/{id}", name="matiere_show", methods={"GET"})
      */
-    public function show(Matiere $matiere): Response
+    public function show(Matiere $matiere, MatiereRepository $matiereRepository, $id): Response
     {
+        $matieres = $matiereRepository->findWithParties($id);
+
         return $this->render('matiere/show.html.twig', [
             'matiere' => $matiere,
+            'matieres' => $matieres,
         ]);
     }
 
@@ -70,6 +76,9 @@ class MatiereController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            foreach($request->get('parties') as $partie) {
+                $matiere->addParty($partie);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('matiere_index');

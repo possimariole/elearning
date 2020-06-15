@@ -3,6 +3,7 @@
 {% block title %}Détail sur la Matiere{% endblock %}
 
 {% block body %}
+{{ dump(matieres) }}
      <div class="container-fluid dashboard-content">
         <div class="row">
             <div class="col-xl-12">
@@ -13,13 +14,23 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="nom" class="col-form-label">Nom</label>
-                                    <input id="nom" disabled type="text" class="form-control" value={{ matiere.nom }}>
-                                    </div>
+                                    <input id="nom" disabled type="text" class="form-control" value={{ matiere.nom|e('html_attr') }}>
+                                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="code" class="col-form-label">Code</label>
-                                    <input id="code" disabled type="text" class="form-control" value={{ matiere.code }}>
+                                    <input id="code" disabled type="text" class="form-control" value={{ matiere.code|e('html_attr') }}>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="extrait" class="col-form-label">Extrait</label>
+                                    <textarea id="extrait" disabled type="text" class="form-control" rows="10">
+                                        {{matiere.extrait}}
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
@@ -29,7 +40,6 @@
                         <a class="btn btn-xs btn-info float-right mr-2" href="{{ path('matiere_index') }}">
                             <i class="fa fa-list"></i>&nbsp;Liste
                         </a>
-                        
                         {{ include('matiere/_delete_form.html.twig') }}
                     </div>                            
                 </div>

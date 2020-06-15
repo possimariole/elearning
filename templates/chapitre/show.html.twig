@@ -13,13 +13,17 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="titre" class="col-form-label">Titre</label>
-                                    <input id="titre" disabled type="text" class="form-control" value={{ chapitre.titre}}>
-                                    </div>
+                                    <input id="titre" disabled type="text" class="form-control" value={{ chapitre.titre|e('html_attr') }}>
+                                </div>
                             </div>
-                            <div class="col-6">
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
                                 <div class="form-group">
                                     <label for="contenu" class="col-form-label">Contenu</label>
-                                    <input id="contenu" disabled type="text" class="form-control" value={{ chapitre.contenu }}>
+                                    <textarea id="contenu" disabled type="text" class="form-control" rows=10>
+                                        {{ chapitre.contenu|e('html_attr') }}
+                                    </textarea>
                                 </div>
                             </div>
                         </div>

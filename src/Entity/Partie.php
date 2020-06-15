@@ -26,13 +26,12 @@ class Partie
     private $titre;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $contenu;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Matiere", inversedBy="parties")
-     * @Assert\NotBlank()
      */
     private $matiere;
 

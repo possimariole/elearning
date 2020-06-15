@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Partie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,9 @@ class PartieType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('contenu')
+            ->add('contenu', TextareaType::class, [
+                'required' => false
+            ])
         ;
     }
 

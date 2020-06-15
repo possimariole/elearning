@@ -14,14 +14,13 @@
                                 <div class="form-group">
                                     <label for="nom" class="col-form-label">Nom</label>
                                     <input id="nom" disabled type="text" class="form-control" value={{ apprenant.nom }}>
-
                                  </div>
                             </div>   
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="prenom" class="col-form-label">Prenom</label>
                                     <input id="prenom" disabled type="text" class="form-control" value={{ apprenant.Prenom }}>
-                                    </div>
+                                </div>
                             </div>   
                             </div> 
                              <div class="row">
@@ -29,13 +28,13 @@
                                 <div class="form-group">
                                     <label for="dateNaiss" class="col-form-label">DateNaiss</label>
                                     <input id="dateNaiss" disabled type="text" class="form-control" value={{ apprenant.dateNaiss|date('d/m/Y')}}>
-                                    </div>
+                                </div>
                             </div>   
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="pays" class="col-form-label">Pays</label>
                                     <input id="pays" disabled type="text" class="form-control" value={{ apprenant.pays}}>
-                                    </div>
+                                </div>
                             </div>
                             </div>
                              <div class="row">
@@ -43,13 +42,13 @@
                                 <div class="form-group">
                                     <label for="vile" class="col-form-label">Ville</label>
                                     <input id="ville" disabled type="text" class="form-control" value={{ apprenant.ville}}>
-                                    </div>
+                                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="sexe" class="col-form-label">Sexe</label>
                                     <input id="sexe" disabled type="text" class="form-control" value={{ apprenant.sexe}}>
-                                    </div>
+                                </div>
                             </div>
                             </div>
                              <div class="row">
@@ -57,8 +56,7 @@
                                 <div class="form-group">
                                     <label for="lieuNaissance" class="col-form-label">lieuNaissance</label>
                                     <input id="lieuNaissance" disabled type="text" class="form-control" value={{ apprenant.lieuNaissance}}>
-
-                        </div>
+                                </div>
                             </div>
                             </div>
                         <a class="btn btn-xs btn-primary float-right mr-2" href="{{ path('apprenant_edit', {'id': apprenant.id}) }}">

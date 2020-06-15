@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Chapitre;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +14,10 @@ class ChapitreType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('contenu')
-            ->add('partie')
+            ->add('contenu', TextareaType::class, [
+                'required' => true
+            ])
+            ->add('parties')
         ;
     }
 

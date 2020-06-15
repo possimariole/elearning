@@ -47,4 +47,16 @@ class MatiereRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findWithParties($id): ?Matiere
+    {
+        return $this->createQueryBuilder('m')
+        ->innerJoin('m.parties', 'p')
+        ->addSelect('p')
+        ->andWhere('m.id = :id')
+        ->setParameter('id', $id)
+        ->getQuery()
+        ->getOneOrNullResult()
+        ;
+    }
 }

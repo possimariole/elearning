@@ -7,51 +7,53 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
-                    <h3 class="card-header text-uppercase">Liste des matieres</h3>                    
+                    <h3 class="card-header text-uppercase">Liste des matieres</h3>
                     <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                   
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Code</th>
-                                    <th scope="col">Titre</th>
-                                   
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for matiere in matieres %}
-                                    <tr>
-                                        
-                                        <td>{{ matiere.nom }}</td>
-                                        <td>{{ matiere.code }}</td>
-                                        <td>
+                        <div class="row">
+                        {% for matiere in matieres %}
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        {{matiere.nom}}
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text text-justify">
+                                            {{matiere.extrait|striptags|slice(0, 200)}}...
+                                        </p>
+                                        <a class="btn btn-xs btn-info" href="{{ path('matiere_show', {'id': matiere.id}) }}" class="btn btn-primary">
+                                            <i class="fa fa-eye"> Lire</i>
+                                        </a>
+                                        {% if is_granted('ROLE_ENSEIGNANT') %}
+                                            <a class="btn btn-xs btn-primary" href="{{ path('matiere_edit', {'id': matiere.id}) }}">
+                                                <i class="fa fa-pencil-square-o"> Modifier</i>
+                                            </a>
                                             <form method="post" action="{{ path('matiere_delete', {'id': matiere.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément?');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ matiere.id) }}">
-                                                <button class="btn btn-xs btn-danger float-left mr-2">
-                                                    <i class="fa fa-trash"></i>
+                                                <button class="btn btn-xs btn-danger">
+                                                    <i class="fa fa-trash"> Supprimer</i>
                                                 </button>
                                             </form>
-                                            <a class="btn btn-xs btn-info" href="{{ path('matiere_show', {'id': matiere.id}) }}">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-xs btn-primary" href="{{ path('matiere_edit', {'id': matiere.id}) }}">
-                                                <i class="fa fa-pencil-square-o"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="3">no records found</td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                        <hr/>
-                        <a class="btn btn-xs btn-primary float-right" href="{{ path('matiere_new') }}">
-                            <i class="fa fa-pencil"></i>&nbsp;Ajouter
-                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="card-text">no records found</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        {% if is_granted('ROLE_ENSEIGNANT') %}
+                            <hr/>
+                            <a class="btn btn-xs btn-primary float-right" href="{{ path('matiere_new') }}">
+                                <i class="fa fa-pencil"></i>&nbsp;Ajouter
+                            </a>
+                        {% endif %}
                     </div>                            
                 </div>
             </div>

@@ -2,29 +2,35 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                {# Affichage du label du champ du formulaire. #}
                 {{ form_label(form.nom, "Nom", {'attr': {'class': 'col-form-label', 'for':'nom'}}) }}
-
-                {# Affichage des erreurs pour ce champ précis. #}
                 {{ form_errors(form.nom) }}
-
-                {# Affichage du champ du formulaire. #}
-                {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'type':'text', 'id': 'nom'}}) }}
-                </div>
-        </div>
-            <div class="col-6">
-            <div class="form-group">
-                {# Affichage du label du champ du formulaire. #}
-                {{ form_label(form.code, "Code", {'attr': {'class': 'col-form-label', 'for':'code'}}) }}
-
-                {# Affichage des erreurs pour ce champ précis. #}
-                {{ form_errors(form.code) }}
-
-                {# Affichage du champ du formulaire. #}
-                {{ form_widget(form.code, {'attr': {'class': 'form-control', 'code':'text', 'id': 'code'}}) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control form-control-sm', 'type':'text', 'id': 'nom'}}) }}
             </div>
         </div>
-    </div>                        
+        <div class="col-6">
+            <div class="form-group">
+                {{ form_label(form.code, "Code", {'attr': {'class': 'col-form-label', 'for':'code'}}) }}
+                {{ form_errors(form.code) }}
+                {{ form_widget(form.code, {'attr': {'class': 'form-control form-control-sm', 'code':'text', 'id': 'code'}}) }}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                {{ form_label(form.parties, "Code", {'attr': {'class': 'col-form-label', 'for':'parties'}}) }}
+                {{ form_errors(form.parties) }}
+                {{ form_widget(form.parties, {'attr': {'class': 'form-control form-control-sm', 'types':'text', 'id': 'parties'}}) }}
+            </div>
+        </div>
+    </div>   
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                {{ form_label(form.extrait, "Extrait", {'attr': {'class': 'col-form-label', 'for':'extrait'}}) }}
+                {{ form_errors(form.extrait) }}
+                {{ form_widget(form.extrait, {'attr': {'class': 'form-control form-control-sm', 'type':'text', 'id': 'extrait', 'rows': '10'}}) }}
+            </div>
+        </div>
+    </div>                       
     <button class="btn btn-xs btn-success float-right">
         <i class="fa fa-download"></i>&nbsp;
         {{ button_label|default('Enregistrer') }}

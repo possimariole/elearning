@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7ef0c9f432bced64a40825f1e920237",
+    "content-hash": "9922b15a40f608dd93afb79ec01ff36a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2327,6 +2327,72 @@
             "time": "2020-03-30T11:42:42+00:00"
         },
         {
+            "name": "symfony/debug-bundle",
+            "version": "v5.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/debug-bundle.git",
+                "reference": "4bae28a913fa32ec123a37b3178b7b7d3a4ac323"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/debug-bundle/zipball/4bae28a913fa32ec123a37b3178b7b7d3a4ac323",
+                "reference": "4bae28a913fa32ec123a37b3178b7b7d3a4ac323",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "php": ">=7.2.5",
+                "symfony/http-kernel": "^4.4|^5.0",
+                "symfony/twig-bridge": "^4.4|^5.0",
+                "symfony/var-dumper": "^4.4|^5.0"
+            },
+            "conflict": {
+                "symfony/config": "<4.4",
+                "symfony/dependency-injection": "<4.4"
+            },
+            "require-dev": {
+                "symfony/config": "^4.4|^5.0",
+                "symfony/dependency-injection": "^4.4|^5.0",
+                "symfony/web-profiler-bundle": "^4.4|^5.0"
+            },
+            "suggest": {
+                "symfony/config": "For service container configuration",
+                "symfony/dependency-injection": "For using as a service from the container"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\DebugBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony DebugBundle",
+            "homepage": "https://symfony.com",
+            "time": "2020-05-20T17:38:26+00:00"
+        },
+        {
             "name": "symfony/dependency-injection",
             "version": "v5.0.8",
             "source": {
@@ -2737,20 +2803,20 @@
         },
         {
             "name": "symfony/expression-language",
-            "version": "v5.0.8",
+            "version": "v5.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/expression-language.git",
-                "reference": "b93755750b9e2a8d240bdf014de5b545105c5178"
+                "reference": "31ea3085d94d2656a3560ba303e0e27456c5d265"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/expression-language/zipball/b93755750b9e2a8d240bdf014de5b545105c5178",
-                "reference": "b93755750b9e2a8d240bdf014de5b545105c5178",
+                "url": "https://api.github.com/repos/symfony/expression-language/zipball/31ea3085d94d2656a3560ba303e0e27456c5d265",
+                "reference": "31ea3085d94d2656a3560ba303e0e27456c5d265",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2.5",
+                "php": ">=7.2.5",
                 "symfony/cache": "^4.4|^5.0",
                 "symfony/service-contracts": "^1.1|^2"
             },
@@ -2784,7 +2850,7 @@
             ],
             "description": "Symfony ExpressionLanguage Component",
             "homepage": "https://symfony.com",
-            "time": "2020-04-15T15:59:10+00:00"
+            "time": "2020-05-20T17:38:26+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -6463,72 +6529,6 @@
                 }
             ],
             "description": "Symfony CssSelector Component",
-            "homepage": "https://symfony.com",
-            "time": "2020-03-27T16:56:45+00:00"
-        },
-        {
-            "name": "symfony/debug-bundle",
-            "version": "v5.0.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/debug-bundle.git",
-                "reference": "3e11ad42d31b4d996c9715a69e988f6a52a70c9d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug-bundle/zipball/3e11ad42d31b4d996c9715a69e988f6a52a70c9d",
-                "reference": "3e11ad42d31b4d996c9715a69e988f6a52a70c9d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-xml": "*",
-                "php": "^7.2.5",
-                "symfony/http-kernel": "^4.4|^5.0",
-                "symfony/twig-bridge": "^4.4|^5.0",
-                "symfony/var-dumper": "^4.4|^5.0"
-            },
-            "conflict": {
-                "symfony/config": "<4.4",
-                "symfony/dependency-injection": "<4.4"
-            },
-            "require-dev": {
-                "symfony/config": "^4.4|^5.0",
-                "symfony/dependency-injection": "^4.4|^5.0",
-                "symfony/web-profiler-bundle": "^4.4|^5.0"
-            },
-            "suggest": {
-                "symfony/config": "For service container configuration",
-                "symfony/dependency-injection": "For using as a service from the container"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Bundle\\DebugBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony DebugBundle",
             "homepage": "https://symfony.com",
             "time": "2020-03-27T16:56:45+00:00"
         },

@@ -30,6 +30,11 @@ class Matiere
      */
     private $code;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $extrait;
+
      /**
      * @ORM\OneToMany(targetEntity="App\Entity\Note", mappedBy="matiere")
      */
@@ -286,6 +291,18 @@ class Matiere
         if ($userOption->getMatiere() !== $this) {
             $userOption->setMatiere($this);
         }
+
+        return $this;
+    }
+
+    public function getExtrait(): ?string
+    {
+        return $this->extrait;
+    }
+
+    public function setExtrait(?string $extrait): self
+    {
+        $this->extrait = $extrait;
 
         return $this;
     }
